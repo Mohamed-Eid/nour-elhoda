@@ -29,6 +29,8 @@ Route::group(['prefix' => 'admin'], function () {
         return view('dashboard.settings.index');
     });
 
+    Route::resource('users', 'Dashboard\UserController');
+
 });
 
 

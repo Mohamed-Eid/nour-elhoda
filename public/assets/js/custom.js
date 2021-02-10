@@ -1,4 +1,39 @@
 $(document).ready( function () {
+
+
+  $('.delete_item_in_form').on('click',function (e) {
+
+    var that = $(this)
+
+    e.preventDefault();
+    
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        }).then((result) => {
+        if (result.value) {
+            that.closest('form').submit();
+
+        // For more information about handling dismissals please visit
+        // https://sweetalert2.github.io/#handling-dismissals
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            Swal.fire(
+                "Cancelled",
+                "Your imaginary file is safe :)", 
+                "error"
+        );
+
+        }
+    })
+
+
+  }); //end of delete
+
   // START:: CHANGE PROFILE PAGE
   $(".image").on('change', function() {
     if (this.files && this.files[0]) {

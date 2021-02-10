@@ -85,20 +85,24 @@
 		<!-- START:: DATEPICKER SCRIPT -->
 
 		<!-- START:: UPLOADFILES SCRIPT -->
-		<script src="{{ asset('assets/plugins/custom/uppy/uppy.bundle.js') }}" type="text/javascript"></script>
+		{{-- <script src="{{ asset('assets/plugins/custom/uppy/uppy.bundle.js') }}" type="text/javascript"></script>
 		<script src="{{ asset('assets/js/pages/crud/file-upload/uppy.js') }}" type="text/javascript"></script>
-		<script src="{{ asset('assets/js/pages/crud/file-upload/dropzonejs.js') }}" type="text/javascript"></script>
-    <!-- END:: UPLOADFILES SCRIPT -->
+		<script src="{{ asset('assets/js/pages/crud/file-upload/dropzonejs.js') }}" type="text/javascript"></script> --}}
+		<!-- END:: UPLOADFILES SCRIPT -->
 
-    <!-- START:: SWEET ALERT -->
-    <script src="{{ asset('assets/js/pages/components/extended/sweetalert2.js') }}" type="text/javascript"></script>
-    <!-- END:: SWEET ALERT -->
+		<!-- START:: SWEET ALERT -->
+		<script src="{{ asset('assets/js/pages/components/extended/sweetalert2.js') }}" type="text/javascript"></script>
+		<!-- END:: SWEET ALERT -->
 
 		<!-- START:: SELECT TIME SCRIPT -->
 		<script src="{{ asset('assets/js/pages/crud/forms/widgets/bootstrap-timepicker.js') }}" type="text/javascript"></script>
-    <!-- END:: SELECT TIME SCRIPT -->
+	<!-- END:: SELECT TIME SCRIPT -->
 
 		<script src="{{ asset('assets/js/custom.js') }}"></script>
+
+		@include('dashboard.layouts.includes.partials._session')
+
+
 	</body>
 
 	<!-- end::Body -->
