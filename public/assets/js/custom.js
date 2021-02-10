@@ -211,14 +211,14 @@ $(document).ready( function () {
   // END:: SWEET ALERT
 
   // START:: TEXT EDITOR
-  ClassicEditor
-  .create( document.querySelector( '.default' ) )
-  .then( editor => {
-    console.log( editor );
-  } )
-  .catch( error => {
-    console.error( error );
-  } );
+  // ClassicEditor
+  // .create( document.querySelector( '.default' ) )
+  // .then( editor => {
+  //   console.log( editor );
+  // } )
+  // .catch( error => {
+  //   console.error( error );
+  // } );
   // END:: TEXT EDITOR
 
   // START:: CALC THE REMAINING OF NEW DEAL

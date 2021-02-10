@@ -103,6 +103,50 @@
 		@include('dashboard.layouts.includes.partials._session')
 
 
+		<script>
+			function changeImagePreview(e, extType = 'image') {
+				// alert(extType);
+				var input = e.target.name;
+				var files = e.target.files;
+				var arrayExt = ['pdf','doc','docx','txt'];
+				var div = $('input[name='+e.target.name+']').parent().next('div');
+				// console.log(files);
+				var src = (extType == 'file') ? 'http://www.pngall.com/wp-content/uploads/2018/05/Files-High-Quality-PNG.png':'https://lightwidget.com/wp-content/uploads/2018/05/local-file-not-found-295x300.png';
+				$.each(files, function (key, file) {
+					//start check file extension
+					var allowExt = (extType == 'file' )?  arrayExt : ['jpg', 'jpeg', 'gif', 'png'];
+					var ext = files[0].name.split('.');
+					if (allowExt.includes(ext[1].toLowerCase()) == false) {
+						toasts(attributes['Please Upload Valid '+extType+' Extension'], 'error', '', '', 2000);
+						div.text('');
+						files[0] = {};
+						return false;
+					}
+					//end check extension
+					var reader = new FileReader();
+					reader.readAsDataURL(file);
+					console.log(reader);
+					reader.onload = function (e) {
+						var image = '<div class="overlay-btn text-white" onclick="removeImagePreview(event)" data-div="'+input+'"><span class="bg-danger">&times;</span></div> <img class="img-thumbnail" width="200" height="200" src="' + e.target.result + '" onError="this.onerror=null;this.src= '+src+';">';
+						div.html(image);
+					}
+				});
+			}
+
+			/**
+			 * Remove image preview
+			 * @param event
+			 */
+			function removeImagePreview(event){
+				var target = $('input[name='+$(event.target).data('div')+']');
+				var div = target.parent().next('div');
+				div.text('');//remove data preview
+				target.val('');//empty file input
+				var route = target.data('delete');
+				console.log(route);
+			}
+		</script>
+		@stack('scripts')
 	</body>
 
 	<!-- end::Body -->
