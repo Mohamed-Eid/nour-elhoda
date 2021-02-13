@@ -188,7 +188,7 @@
                             <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
                                 <div class="kt-header__topbar-user">
                                     <span class="kt-header__topbar-username kt-hidden-mobile">محمود سليمان</span>
-                                    <img alt="Pic" class="kt-radius-100" src="assets/media/users/300_14.jpg" />
+                                    <img alt="Pic" class="kt-radius-100" src="{{ asset('assets/media/users/300_14.jpg') }}" />
                                 </div>
                             </div>
                             <div

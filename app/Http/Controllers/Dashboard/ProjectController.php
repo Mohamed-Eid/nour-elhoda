@@ -15,7 +15,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $projects = Project::all();
+        return view('dashboard.projects.index',compact('projects'));
     }
 
     /**
@@ -106,8 +107,24 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        //
+        if ($project->image != 'default.png' ) {
+            delete_image('projects',$project->image);
+        }
+
+        if ($project->header != 'default.png' ) {
+            delete_image('projects',$project->header);
+        }
+
+        foreach ($project->investigations as $investigation) {
+            if ($investigation->image != 'default.png' ) {
+                delete_image('investigations',$investigation->header);
+            }
+        }
+
+        $project->delete();
+
+        return redirect()->back()->with('success','تم الحذف بنجاح');   
     }
 }
