@@ -80,5 +80,15 @@ function is_active($route){
 }
 
 
+function process_videos(Illuminate\Http\Request $request){
+    $data = [];
+    foreach ($request->videos as $key => $video) {
+        $data[$key]['ar']['name'] = $video['ar_name'];
+        $data[$key]['en']['name'] = $video['en_name'];
+        $data[$key]['url']        = $video['url'];
+    }
+    return $data;
+}
+
 
 ?>
