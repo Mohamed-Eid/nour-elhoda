@@ -13,4 +13,15 @@ class Project extends Model implements TranslatableContract
     public $translatedAttributes = ['name', 'description'];
 
     protected $guarded = [];
+
+
+    public function videos()
+    {
+        return $this->morphMany(Video::class, 'videoable');
+    }
+
+    public function investigations()
+    {
+        return $this->hasMany(Investigation::class);
+    }
 }

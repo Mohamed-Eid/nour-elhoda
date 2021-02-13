@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Project;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -35,9 +36,36 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($this->process_videos($request));
+        // dd($request->all());
+        //TODO : Validate request
+
+        $project_data = $request->except('_token','investigations','videos','image','header');
+        $project_data['image'] = upload_image_without_resize('projects',$request->image);
+        $project_data['header'] = upload_image_without_resize('projects',$request->header);
+        $project = Project::create($project_data);
+
+        foreach ($request->investigations as $key => $investigation) {
+            $investigation['image'] = upload_image_without_resize('investigations',$investigation['image']); 
+            $project->investigations()->create($investigation);
+        }
+        foreach ($this->process_videos($request) as $video) {
+            $project->videos()->create($video);
+        }
+
+        return redirect()->back()->with('success','تمت الإضافة بنجاح');
+        
     }
 
+    private function process_videos(Request $request){
+        $data = [];
+        foreach ($request->videos as $key => $video) {
+            $data[$key]['ar']['name'] = $video['ar_name'];
+            $data[$key]['en']['name'] = $video['en_name'];
+            $data[$key]['url']        = $video['url'];
+        }
+        return $data;
+    }
     /**
      * Display the specified resource.
      *

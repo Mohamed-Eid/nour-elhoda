@@ -21,17 +21,17 @@ Route::get('/', function () {
 
 
 Route::group(['prefix' => 'admin'], function () {
-    
-    Route::get('/', 'HomeController@index')->name('home');
-
     Auth::routes();
-    Route::get('/settings', function () {
-        return view('dashboard.settings.index');
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/', 'HomeController@index')->name('home');
+
+        Route::get('/settings', function () {
+            return view('dashboard.settings.index');
+        });
+    
+        Route::resource('users', 'Dashboard\UserController');
+        Route::resource('projects', 'Dashboard\ProjectController');
     });
-
-    Route::resource('users', 'Dashboard\UserController');
-    Route::resource('projects', 'Dashboard\ProjectController');
-
 });
 
 
