@@ -101,7 +101,7 @@
                         </div>
                         <!--END:: TITLE-->
 
-                        @for ($i = 1; $i <= 4; $i++)
+                        {{-- @for ($i = 1; $i <= 4; $i++)
                         <div class="col-6 col-md-3 px-3">
                             <div class="form-group">
                                 <label class="col-12 col-form-label">Non-outline Style</label>
@@ -132,8 +132,94 @@
                                 </div>
                             </div>
                         </div>                            
-                        @endfor
+                        @endfor --}}
                         
+
+                        <div id="kt_repeater_2" class="col-12">
+                            <div class="form-group form-group-last" id="kt_repeater_2">
+                                <div data-repeater-list="investigations" class="col-12">
+                                    <div data-repeater-item class="form-group align-items-center">
+                                        <div class="col-12 d-flex">
+                                            <div class="row">
+                                                <div class="col-4">
+
+                                                    <div class="form-group ">
+                                                        <input id="pro_img" name="image" type="file" onchange="readURL(this);" />
+                                                        {{-- <label for="pro_img">
+                                                            <img id="product_img" src="{{ asset('assets/media/users/300_14.jpg') }}" alt="your image" />
+                                                            <div class="img-hover"><i class="fa fa-photo"></i></div>
+                                                        </label> --}}
+
+                                                    </div>
+                                                    @push('scripts')
+                                                        <script>
+                                                            function readURL(input) {
+                                                                console.log(input);
+                                                                if (input.files && input.files[0]) {
+                                                                    var reader = new FileReader();
+
+                                                                    // console.log(input)
+                                                                    el = 'input[name='+ "'" + input.name + "'" +']';
+
+                                                                    // console.log(el);
+                                                                    // console.log($(el).next('label').children('img'));
+                                                                    
+                                                                    // console.log($("input[name='investigations[0][image]']"))
+                                                                    reader.onload = function (e) {
+                                                                        console.log(e);
+                                                                        // id = $('input[name='+input.name+']').next('label');//.children('#product_img');
+                                                                        // console.log(id);
+                                                                        // id.attr('src', e.target.result);
+                                                                        $(el).next('label').children('img')
+                                                                            .attr('src', e.target.result);
+                                                                    };
+
+                                                                    reader.readAsDataURL(input.files[0]);
+                                                                }
+                                                            }
+                                                        </script>
+                                                    @endpush
+
+                                                </div>
+
+                                                <div class="col-8">
+                                                    <div class="input-group-prepend col-12 my-2">
+                                                        <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
+                                                        </span>
+                                                        <input type="text" name="[ar][name]" class="form-control d-block" placeholder="الاسم باللغة العربية">
+                                                    </div>
+                
+                                                    <div class="input-group-prepend col-12 my-2">
+                                                        <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
+                                                        </span>
+                                                        <input type="text" name="[en][name]" class="form-control d-block" placeholder="الاسم باللغة الانجليزيه">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="kt-form__group--inline col-1 mt-2">
+                                                <a href="javascript:;" data-repeater-delete="" class="btn-sm btn btn-label-danger btn-bold">
+                                                    <i class="la la-trash-o"></i>
+                                                    حذف
+                                                </a>
+                                            </div>
+
+                                            <div class="d-md-none kt-margin-b-10"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-last">
+                                <label class="col-lg-2 col-form-label"></label>
+                                <div class="col-lg-4">
+                                    <a href="javascript:;" data-repeater-create="" class="btn btn-bold btn-sm btn-label-brand">
+                                        <i class="la la-plus"></i> إضافة استثمار
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
 
 
 

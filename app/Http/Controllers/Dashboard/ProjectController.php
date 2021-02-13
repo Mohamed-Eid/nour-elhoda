@@ -38,7 +38,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         // dd($this->process_videos($request));
-        // dd($request->all());
+        dd($request->all());
         //TODO : Validate request
 
         $project_data = $request->except('_token','investigations','videos','image','header');

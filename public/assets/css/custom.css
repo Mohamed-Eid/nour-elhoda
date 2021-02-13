@@ -618,3 +618,32 @@ input.btn.btn-label-brand.active {
   background: #f0a500;
 }
 /* END:: CUSTOMIZE SCROLLTOP STYLE */
+
+
+.field_img {display: block; box-shadow: inherit; background: transparent;}
+.field_img:before, .field_img:after {content: ""; display: table; clear: both;}
+.field_img > input {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.04);
+    width: 100%;
+    padding: 15px 5px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+	display: none;
+}
+
+.field_img label {position: relative; text-align: center;}
+.field_img label .img-hover {
+    position: absolute;
+    left: 0;
+    right: 0;
+    line-height: 120px;
+    top: 0;
+    font-size: 33px;
+    background: rgba(41, 59, 143, 0.7);
+    border-radius: 10px;
+    opacity: 0;
+	transition: opacity .3s linear 0s;
+    cursor: pointer;
+}
+.field_img img {max-width: 120px; height: 120px; border-radius: 10px;}
+.field_img label:hover .img-hover {opacity: 0.7;}
