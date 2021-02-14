@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Article;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateArticleRequest;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -34,20 +35,22 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateArticleRequest $request)
     {
 
-        $article_data = $request->except('_token','investigations','videos','image','header');
+        $article_data = $request->except('_token','videos','image','header');
         
         $article_data['image'] = upload_image_without_resize('articles',$request->image);
         $article_data['header'] = upload_image_without_resize('articles',$request->header);
         
         $article = Article::create($article_data);
 
-
-        foreach (process_videos($request) as $video) {
-            $article->videos()->create($video);
+        if($request->videos){
+            foreach (process_videos($request) as $video) {
+                $article->videos()->create($video);
+            }
         }
+
 
         return redirect()->back()->with('success','تمت الإضافة بنجاح');
     }

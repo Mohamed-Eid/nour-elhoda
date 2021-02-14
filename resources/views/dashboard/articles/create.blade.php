@@ -30,7 +30,8 @@
                                 <div class="input-group-prepend col-12">
                                     <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
                                     </span>
-                                    <input type="file" name="image" onchange="changeImagePreview(event);" class="form-control d-block" placeholder="Image">
+                                    <input type="file" name="image" onchange="changeImagePreview(event);" class="form-control d-block {{ input_has_error('image',$errors) }}" placeholder="Image">
+                                    @include('dashboard.layouts.includes.partials._input_validate',['field' => 'image'])
                                 </div>
                                 <div class="border mt-2">
             
@@ -44,7 +45,8 @@
                                 <div class="input-group-prepend col-12">
                                     <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
                                     </span>
-                                    <input type="file" name="header" onchange="changeImagePreview(event);" class="form-control" placeholder="Image">
+                                    <input type="file" name="header" onchange="changeImagePreview(event);" class="form-control {{ input_has_error('header',$errors) }}" placeholder="Image">
+                                    @include('dashboard.layouts.includes.partials._input_validate',['field' => 'header'])
                                 </div>
                                 <div class="border mt-2">
             
@@ -58,7 +60,8 @@
                                 <div class="input-group-prepend col-12">
                                     <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
                                     </span>
-                                    <input type="text" name="ar[name]" class="form-control" placeholder="الإسم">
+                                    <input type="text" name="ar[name]" class="form-control {{ input_has_error('ar.name',$errors) }}" placeholder="الإسم">
+                                    @include('dashboard.layouts.includes.partials._input_validate',['field' => 'ar.name'])
                                 </div>
                             </div>
                         </div>
@@ -69,7 +72,8 @@
                                 <div class="input-group-prepend col-12">
                                     <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
                                     </span>
-                                    <input type="text" name="en[name]" class="form-control" placeholder="الإسم">
+                                    <input type="text" name="en[name]" class="form-control {{ input_has_error('en.name',$errors) }}" placeholder="الإسم">
+                                    @include('dashboard.layouts.includes.partials._input_validate',['field' => 'en.name'])
                                 </div>
                             </div>
                         </div>
@@ -79,7 +83,8 @@
                             <div class="row">
                                 <label class="col-form-label col-12"> الوصف باللغة العربية </label>
                                 <div class="input-group-prepend col-12">
-                                <textarea class="default-ar" name="ar[description]"></textarea>
+                                <textarea class="default-ar {{ input_has_error('ar.description',$errors) }}" name="ar[description]"></textarea>
+                                @include('dashboard.layouts.includes.partials._input_validate',['field' => 'ar.description'])
                                 </div>
                             </div>
                         </div>
@@ -88,7 +93,8 @@
                             <div class="row">
                                 <label class="col-form-label col-12"> الوصف باللغة الانجليزية </label>
                                 <div class="input-group-prepend col-12">
-                                    <textarea class="default-en" name="en[description]"></textarea>
+                                    <textarea class="default-en {{ input_has_error('en.description',$errors) }}" name="en[description]"></textarea>
+                                    @include('dashboard.layouts.includes.partials._input_validate',['field' => 'en.description'])
                                 </div>
                             </div>
                         </div>

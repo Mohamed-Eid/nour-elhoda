@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateProjectRequest extends FormRequest
+class CreateArticleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -33,6 +33,6 @@ class CreateProjectRequest extends FormRequest
             $rules += [$locale.'.description' => ['required']];
         }
 
-        return $rules; 
+        return $rules;
     }
 }

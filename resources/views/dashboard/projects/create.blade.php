@@ -45,7 +45,7 @@
                                 <div class="input-group-prepend col-12">
                                     <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
                                     </span>
-                                    <input type="file" name="header" onchange="changeImagePreview(event);" class="form-control {{ input_has_error('image',$errors) }}" placeholder="Image">
+                                    <input type="file" name="header" onchange="changeImagePreview(event);" class="form-control {{ input_has_error('header',$errors) }}" placeholder="Image">
                                     @include('dashboard.layouts.includes.partials._input_validate',['field' => 'header'])
                                 </div>
                                 <div class="border mt-2">
