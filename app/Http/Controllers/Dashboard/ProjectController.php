@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateProjectRequest;
 use App\Project;
 use Illuminate\Http\Request;
 
@@ -35,19 +36,16 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateProjectRequest $request)
     {
-        // dd($this->process_videos($request));
-        dd($request->all());
-        //TODO : Validate request
 
         $project_data = $request->except('_token','investigations','videos','image','header');
         $project_data['image'] = upload_image_without_resize('projects',$request->image);
         $project_data['header'] = upload_image_without_resize('projects',$request->header);
         $project = Project::create($project_data);
 
-        foreach ($request->investigations as $key => $investigation) {
-            $investigation['image'] = upload_image_without_resize('investigations',$investigation['image']); 
+        //TODO:: validate investigations , videos
+        foreach ($this->process_investigations($request) as $investigation) {
             $project->investigations()->create($investigation);
         }
         foreach ($this->process_videos($request) as $video) {
@@ -64,6 +62,15 @@ class ProjectController extends Controller
             $data[$key]['ar']['name'] = $video['ar_name'];
             $data[$key]['en']['name'] = $video['en_name'];
             $data[$key]['url']        = $video['url'];
+        }
+        return $data;
+    }
+    private function process_investigations(Request $request){
+        $data = [];
+        foreach ($request->investigations as $key => $investigation) {
+            $data[$key]['ar']['name'] = $investigation['ar_name'];
+            $data[$key]['en']['name'] = $investigation['en_name'];
+            $data[$key]['image']      = upload_image_without_resize('investigations',$investigation['image']);
         }
         return $data;
     }

@@ -61,7 +61,7 @@ function upload_file($path, $request_file){
 
 function input_has_error($field , $errors){
 
-    return $errors->has($field) ? 'has-error' : '';
+    return $errors->has($field) ? 'is-invalid' : '';
 }
 
 

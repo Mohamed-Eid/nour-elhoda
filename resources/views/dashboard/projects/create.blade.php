@@ -30,7 +30,8 @@
                                 <div class="input-group-prepend col-12">
                                     <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
                                     </span>
-                                    <input type="file" name="image" onchange="changeImagePreview(event);" class="form-control d-block" placeholder="Image">
+                                    <input type="file" name="image" onchange="changeImagePreview(event);" class="form-control d-block {{ input_has_error('image',$errors) }}" placeholder="Image" >
+                                    @include('dashboard.layouts.includes.partials._input_validate',['field' => 'image'])
                                 </div>
                                 <div class="border mt-2">
             
@@ -44,7 +45,8 @@
                                 <div class="input-group-prepend col-12">
                                     <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
                                     </span>
-                                    <input type="file" name="header" onchange="changeImagePreview(event);" class="form-control" placeholder="Image">
+                                    <input type="file" name="header" onchange="changeImagePreview(event);" class="form-control {{ input_has_error('image',$errors) }}" placeholder="Image">
+                                    @include('dashboard.layouts.includes.partials._input_validate',['field' => 'header'])
                                 </div>
                                 <div class="border mt-2">
             
@@ -58,7 +60,9 @@
                                 <div class="input-group-prepend col-12">
                                     <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
                                     </span>
-                                    <input type="text" name="ar[name]" class="form-control" placeholder="الإسم">
+                                    <input type="text" name="ar[name]" class="form-control {{ input_has_error('ar.name',$errors) }}" placeholder="الإسم">
+                                    @include('dashboard.layouts.includes.partials._input_validate',['field' => 'ar.name'])
+
                                 </div>
                             </div>
                         </div>
@@ -69,7 +73,8 @@
                                 <div class="input-group-prepend col-12">
                                     <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
                                     </span>
-                                    <input type="text" name="en[name]" class="form-control" placeholder="الإسم">
+                                    <input type="text" name="en[name]" class="form-control {{ input_has_error('ar.name',$errors) }}" placeholder="الإسم">
+                                    @include('dashboard.layouts.includes.partials._input_validate',['field' => 'en.name'])
                                 </div>
                             </div>
                         </div>
@@ -79,8 +84,11 @@
                             <div class="row">
                                 <label class="col-form-label col-12"> الوصف باللغة العربية </label>
                                 <div class="input-group-prepend col-12">
-                                <textarea class="default-ar" name="ar[description]"></textarea>
+                                <textarea class="default-ar {{ input_has_error('ar.description',$errors) }}" name="ar[description]"></textarea>
+                                @include('dashboard.layouts.includes.partials._input_validate',['field' => 'ar.description'])
+
                                 </div>
+
                             </div>
                         </div>
 
@@ -101,101 +109,33 @@
                         </div>
                         <!--END:: TITLE-->
 
-                        {{-- @for ($i = 1; $i <= 4; $i++)
-                        <div class="col-6 col-md-3 px-3">
-                            <div class="form-group">
-                                <label class="col-12 col-form-label">Non-outline Style</label>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="kt-avatar" id="kt_user_avatar_{{ $i }}">
-                                            <div class="kt-avatar__holder" style="background-image: url({{ asset('assets/media/users/100_2.jpg') }})"></div>
-                                            <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change avatar">
-                                                <i class="fa fa-pen"></i>
-                                                <input type="file" name="investigations[{{ $i }}][image]" accept=".png, .jpg, .jpeg">
-                                            </label>
-                                            <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Cancel avatar">
-                                                <i class="fa fa-times"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="input-group-prepend col-12 my-2">
-                                        <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
-                                        </span>
-                                        <input type="text" name="investigations[{{ $i }}][ar][name]" class="form-control d-block" placeholder="الاسم باللغة العربية">
-                                    </div>
-
-                                    <div class="input-group-prepend col-12 my-2">
-                                        <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
-                                        </span>
-                                        <input type="text" name="investigations[{{ $i }}][en][name]" class="form-control d-block" placeholder="الاسم باللغة الانجليزيه">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>                            
-                        @endfor --}}
-                        
-
                         <div id="kt_repeater_2" class="col-12">
                             <div class="form-group form-group-last" id="kt_repeater_2">
                                 <div data-repeater-list="investigations" class="col-12">
                                     <div data-repeater-item class="form-group align-items-center">
-                                        <div class="col-12 d-flex">
+                                        <div class="col-12 d-flex" style="display: none;">
                                             <div class="row">
                                                 <div class="col-4">
 
                                                     <div class="form-group ">
                                                         <input id="pro_img" name="image" type="file" onchange="readURL(this);" />
-                                                        {{-- <label for="pro_img">
-                                                            <img id="product_img" src="{{ asset('assets/media/users/300_14.jpg') }}" alt="your image" />
-                                                            <div class="img-hover"><i class="fa fa-photo"></i></div>
-                                                        </label> --}}
-
+                                                        <img class="image-preview" width="150px" height="100px" src="{{ asset('assets/media/users/300_14.jpg') }}" alt="your image" />
                                                     </div>
-                                                    @push('scripts')
-                                                        <script>
-                                                            function readURL(input) {
-                                                                console.log(input);
-                                                                if (input.files && input.files[0]) {
-                                                                    var reader = new FileReader();
-
-                                                                    // console.log(input)
-                                                                    el = 'input[name='+ "'" + input.name + "'" +']';
-
-                                                                    // console.log(el);
-                                                                    // console.log($(el).next('label').children('img'));
-                                                                    
-                                                                    // console.log($("input[name='investigations[0][image]']"))
-                                                                    reader.onload = function (e) {
-                                                                        console.log(e);
-                                                                        // id = $('input[name='+input.name+']').next('label');//.children('#product_img');
-                                                                        // console.log(id);
-                                                                        // id.attr('src', e.target.result);
-                                                                        $(el).next('label').children('img')
-                                                                            .attr('src', e.target.result);
-                                                                    };
-
-                                                                    reader.readAsDataURL(input.files[0]);
-                                                                }
-                                                            }
-                                                        </script>
-                                                    @endpush
-
                                                 </div>
 
                                                 <div class="col-8">
                                                     <div class="input-group-prepend col-12 my-2">
                                                         <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
                                                         </span>
-                                                        <input type="text" name="[ar][name]" class="form-control d-block" placeholder="الاسم باللغة العربية">
+                                                        <input type="text" name="ar_name" class="form-control d-block" placeholder="الاسم باللغة العربية">
                                                     </div>
                 
                                                     <div class="input-group-prepend col-12 my-2">
                                                         <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
                                                         </span>
-                                                        <input type="text" name="[en][name]" class="form-control d-block" placeholder="الاسم باللغة الانجليزيه">
+                                                        <input type="text" name="en_name" class="form-control d-block" placeholder="الاسم باللغة الانجليزيه">
                                                     </div>
                                                 </div>
-
                                             </div>
 
 
@@ -331,6 +271,22 @@
 </script>
 		<!--begin::Page Scripts(used by this page) -->
 
+        <script>
+            function readURL(input) {
+                
+                el = 'input[name='+ "'" + input.name + "'" +']';
+                $(el).on('change', function () {
+                    console.log(el + ' - ' +'changed');
+                    if (this.files && this.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = (e) => {
+                            $(el).next('img').attr('src', e.target.result);
+                        }
+                        reader.readAsDataURL(this.files[0]);
+                    };
+                });
+            }
+        </script>
     <script src="{{ asset('assets/js/pages/crud/file-upload/ktavatar.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/js/pages/crud/forms/widgets/form-repeater.js') }}" type="text/javascript"></script>
 
