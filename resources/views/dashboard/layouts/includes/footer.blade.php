@@ -104,6 +104,30 @@
 
 
 		<script>
+			$('.delete_investigation').on('click',function(e){
+				e.preventDefault();  
+				if(!confirm("Do you really want to do this?")) {
+					return false;
+				}  
+				var url = e.target;
+
+				$.ajax({
+					url: url.href,
+					type: 'DELETE',
+					data: {
+						"_token": "{{ csrf_token()  }}",
+					},
+					success: function (){
+						$(this).parent().parent().remove();
+						console.log("it Works");
+					}
+				});
+				$(this).parent().parent().remove(); 
+			})
+
+		</script>
+
+		<script>
 			function changeImagePreview(e, extType = 'image') {
 				// alert(extType);
 				var input = e.target.name;
