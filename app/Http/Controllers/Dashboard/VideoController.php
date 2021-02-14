@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Investigation;
+use App\Video;
 use Illuminate\Http\Request;
 
-class InvestigationController extends Controller
+class VideoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -79,14 +79,9 @@ class InvestigationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Investigation $investigation)
+    public function destroy(Video $video)
     {
-        if($investigation->image != 'default.png' ) {
-            delete_image('investigations',$investigation->image);
-        }
-
-        $investigation->delete();
-        
+        $video->delete();
         return 'done';
     }
 }

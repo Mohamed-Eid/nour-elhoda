@@ -33,6 +33,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('projects', 'Dashboard\ProjectController');
         Route::resource('articles', 'Dashboard\ArticleController');
         Route::resource('investigations', 'Dashboard\InvestigationController');
+        Route::resource('videos', 'Dashboard\VideoController');
     });
 });
 

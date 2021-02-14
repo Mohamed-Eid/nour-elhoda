@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProjectRequest;
+use App\Investigation;
 use App\Project;
+use App\Video;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -45,8 +47,10 @@ class ProjectController extends Controller
         $project = Project::create($project_data);
 
         //TODO:: validate investigations , videos
-        foreach ($this->process_investigations($request) as $investigation) {
-            $project->investigations()->create($investigation);
+        if($request->investigations){
+            foreach ($this->process_investigations($request) as $investigation) {
+                $project->investigations()->create($investigation);
+            }
         }
         
         if($request->videos){
@@ -108,7 +112,56 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        dd($request->all());
+        
+        $project_data = $request->except('_token','investigations','videos','image','header','old_investigations','old_videos');
+        if($request->image){
+            $project_data['image'] = upload_image_without_resize('projects',$request->image);
+        }
+        if($request->header){
+            $project_data['header'] = upload_image_without_resize('projects',$request->header);
+        }
+        
+        $project->update($project_data);
+
+        //TODO:: validate investigations , videos
+        if($request->investigations){
+            foreach ($this->process_investigations($request) as $investigation) {
+                $project->investigations()->create($investigation);
+            }
+        }
+        
+        if($request->old_investigations){
+            foreach ($request->old_investigations as $key => $value) {
+                $old_inv = Investigation::find($key);
+                $data['ar']['name'] = $value['ar_name'];
+                $data['en']['name'] = $value['en_name'];
+                if(isset($value['image'])){
+                    if ($old_inv->image != 'default.png' ) {
+                        delete_image('investigations', $old_inv->image);
+                    }
+                    $data['image'] = upload_image_without_resize('investigations',$value['image']);
+                }
+                $old_inv->update($data);
+            }
+        }
+        
+        if($request->videos){
+            foreach ($this->process_videos($request) as $video) {
+                $project->videos()->create($video);
+            }
+        }
+
+        if($request->old_videos){
+            foreach ($request->old_videos as $key => $value) {
+                $old_video = Video::find($key);
+                $data['ar']['name'] = $value['ar_name'];
+                $data['en']['name'] = $value['en_name'];
+                $data['url']        = $value['url'];
+                $old_video->update($data);
+            }
+        }
+
+        return redirect()->back()->with('success','تم الحفظ بنجاح');
     }
 
     /**
@@ -129,7 +182,7 @@ class ProjectController extends Controller
 
         foreach ($project->investigations as $investigation) {
             if ($investigation->image != 'default.png' ) {
-                delete_image('investigations',$investigation->header);
+                delete_image('investigations',$investigation->image);
             }
         }
 

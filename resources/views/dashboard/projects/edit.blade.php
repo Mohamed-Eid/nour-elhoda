@@ -203,6 +203,43 @@
                             <div class="kt-form__section kt-form__section--first">
                                 <h3 class="kt-portlet__head-title text-center" style="width: 100%">  الفيديوهات </h3>
 
+                                @foreach ($project->videos as $video)
+                                <div class="col-12 d-flex">
+
+                                    <div class="kt-form__group--inline col-4">
+                                        <div class="input-group-prepend col-12 my-2">
+                                            <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
+                                            </span>
+                                            <input type="text" name="old_videos[{{ $video->id }}][ar_name]" value="{{ $video->translate('ar')->name }}"  class="form-control d-block" placeholder="إسم الفيديو باللغة العربية">
+                                        </div>
+                                    </div>
+                                    <div class="kt-form__group--inline col-4">
+                                        <div class="input-group-prepend col-12 my-2">
+                                            <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
+                                            </span>
+                                            <input type="text" name="old_videos[{{ $video->id }}][en_name]" value="{{ $video->translate('en')->name }}" class="form-control d-block" placeholder="إسم الفيديو باللغة الانجليزيه">
+                                        </div>
+                                    </div>
+
+                                    <div class="kt-form__group--inline col-3">
+                                        <div class="input-group-prepend col-12 my-2">
+                                            <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
+                                            </span>
+                                            <input type="text" name="old_videos[{{ $video->id }}][url]" value="{{ $video->url }}" class="form-control d-block" placeholder="لينك الفيديو">
+                                        </div>
+                                    </div>
+
+                                    <div class="kt-form__group--inline col-1 mt-2">
+                                        <a href="{{ route('videos.destroy',$video) }}" class="delete_investigation btn-sm btn btn-label-danger btn-bold">
+                                            <i class="la la-trash-o"></i>
+                                            حذف
+                                        </a>
+                                    </div>
+
+                                    <div class="d-md-none kt-margin-b-10"></div>
+                                </div>
+                                @endforeach
+
                                 <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
                                 <div id="kt_repeater_1" class="col-12">
                                     <div class="form-group form-group-last" id="kt_repeater_1">
