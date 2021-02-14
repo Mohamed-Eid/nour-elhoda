@@ -48,8 +48,11 @@ class ProjectController extends Controller
         foreach ($this->process_investigations($request) as $investigation) {
             $project->investigations()->create($investigation);
         }
-        foreach ($this->process_videos($request) as $video) {
-            $project->videos()->create($video);
+        
+        if($request->videos){
+            foreach ($this->process_videos($request) as $video) {
+                $project->videos()->create($video);
+            }
         }
 
         return redirect()->back()->with('success','تمت الإضافة بنجاح');
@@ -91,9 +94,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        //
+        return view('dashboard.projects.edit',compact('project'));
     }
 
     /**
@@ -103,9 +106,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        dd($request->all());
     }
 
     /**
