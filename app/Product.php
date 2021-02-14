@@ -14,4 +14,20 @@ class Product extends Model implements TranslatableContract
 
     protected $guarded = [];
     protected  $appends = ['image_path','header_path',];
+
+    public function heighlights(){
+        return $this->hasMany(Heighlight::class);
+    }
+
+    public function integrations(){
+        return $this->hasMany(Integration::class);
+    }
+
+
+    public  function getImagePathAttribute(){
+        return asset('uploads/products/'.$this->image);
+    }
+    public  function getHeaderPathAttribute(){
+        return asset('uploads/products/'.$this->header);
+    }
 }

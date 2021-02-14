@@ -17,12 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('test',function(){
-    $videos = \App\Video::simplePaginate(1);
-    return view('dashboard.test',compact('videos'));
-})->name('test');
-
 Route::group(['prefix' => 'admin'], function () {
     Auth::routes();
     Route::middleware(['auth'])->group(function () {
@@ -37,6 +31,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('articles', 'Dashboard\ArticleController');
         Route::resource('investigations', 'Dashboard\InvestigationController');
         Route::resource('videos', 'Dashboard\VideoController');
+        Route::resource('products', 'Dashboard\ProductController');
+        Route::resource('heighlights', 'Dashboard\HeighlightController');
+        Route::resource('integrations', 'Dashboard\IntegrationController');
     });
 });
 
