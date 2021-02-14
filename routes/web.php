@@ -18,7 +18,10 @@ Route::get('/', function () {
 });
 
 
-
+Route::get('test',function(){
+    $videos = \App\Video::simplePaginate(1);
+    return view('dashboard.test',compact('videos'));
+})->name('test');
 
 Route::group(['prefix' => 'admin'], function () {
     Auth::routes();
