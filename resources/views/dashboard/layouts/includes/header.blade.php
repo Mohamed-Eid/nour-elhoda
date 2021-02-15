@@ -107,7 +107,26 @@
                                 </a>
                             </li>
 
+                            <li class="kt-menu__item"  aria-haspopup="true">
+                                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                    <i class="kt-menu__link-icon la la-gear" style="font-size: 20px"></i>
+                                    <span class="kt-menu__link-text">الإعدادات</span>
+                                    <i class="kt-menu__ver-arrow la la-chevron-down"></i>
+                                </a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
 
+                                        <li class="kt-menu__item">
+                                            <a href="{{ route('settings.contact') }}" class="kt-menu__link kt-menu__toggle"> إعدادات التواصل </a>
+                                        </li>
+
+                                        <li class="kt-menu__item">
+                                            <a href="packages.php" class="kt-menu__link kt-menu__toggle"> باقات الإستضافات </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </li>
 
                         </ul>
                     </div>

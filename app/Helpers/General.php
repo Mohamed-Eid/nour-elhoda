@@ -55,9 +55,9 @@ function upload_file($path, $request_file){
 //     return \App\Setting::where('class',$class)->get();
 // }
 
-// function get_setting_by_key($key){
-//     return \App\Setting::where('key',$key)->first();
-// }
+function get_setting_by_key($key){
+    return \App\Setting::where('key',$key)->first();
+}
 
 function input_has_error($field , $errors){
 

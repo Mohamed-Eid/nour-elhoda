@@ -34,6 +34,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('products', 'Dashboard\ProductController');
         Route::resource('heighlights', 'Dashboard\HeighlightController');
         Route::resource('integrations', 'Dashboard\IntegrationController');
+
+        Route::group(['prefix' => 'settings'], function (){
+            Route::get('contact','Dashboard\SettingController@contact')->name('settings.contact');
+            Route::put('update','Dashboard\SettingController@update')->name('settings.update');
+        });
     });
 });
 
