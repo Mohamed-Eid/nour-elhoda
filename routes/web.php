@@ -34,6 +34,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('products', 'Dashboard\ProductController');
         Route::resource('heighlights', 'Dashboard\HeighlightController');
         Route::resource('integrations', 'Dashboard\IntegrationController');
+        Route::resource('company_heighlights', 'Dashboard\CompanyHeighlightController');
 
         Route::group(['prefix' => 'settings'], function (){
             Route::get('contact','Dashboard\SettingController@contact')->name('settings.contact');

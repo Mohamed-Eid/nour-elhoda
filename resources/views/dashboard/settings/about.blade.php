@@ -91,13 +91,13 @@
                             </div>
                         </div>
 
-                        @foreach (\App\CompanyHeighlight::all() as $heighlight)
+                        @foreach (\App\CompanyHeighlight::all() as $company_heighlight)
                         <div class="row">
                             <div class="col-4">
 
                                 <div class="form-group ">
-                                    <input id="pro_img" name="old_heighlights[{{ $heighlight->id }}][image]" type="file" onchange="readURL(this);" />
-                                    <img class="image-preview" width="150px" height="100px" src="{{ $heighlight->image_path }}" alt="your image" />
+                                    <input id="pro_img" name="old_heighlights[{{ $company_heighlight->id }}][image]" type="file" onchange="readURL(this);" />
+                                    <img class="image-preview" width="150px" height="100px" src="{{ $company_heighlight->image_path }}" alt="your image" />
                                 </div>
                             </div>
 
@@ -105,18 +105,18 @@
                                 <div class="input-group-prepend col-12 my-2">
                                     <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
                                     </span>
-                                    <input type="text" name="old_heighlights[{{ $heighlight->id }}][ar_name]" value="{{ $heighlight->translate('ar')->name }}" class="form-control d-block" placeholder="الاسم باللغة العربية">
+                                    <input type="text" name="old_heighlights[{{ $company_heighlight->id }}][ar_name]" value="{{ $company_heighlight->translate('ar')->name }}" class="form-control d-block" placeholder="الاسم باللغة العربية">
                                 </div>
 
                                 <div class="input-group-prepend col-12 my-2">
                                     <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
                                     </span>
-                                    <input type="text" name="old_heighlights[{{ $heighlight->id }}][en_name]" value="{{ $heighlight->translate('en')->name }}" class="form-control d-block" placeholder="الاسم باللغة الانجليزيه">
+                                    <input type="text" name="old_heighlights[{{ $company_heighlight->id }}][en_name]" value="{{ $company_heighlight->translate('en')->name }}" class="form-control d-block" placeholder="الاسم باللغة الانجليزيه">
                                 </div>
                             </div>
 
                             <div class="kt-form__group--inline col-2 mt-2">
-                                <a href="{{ route('heighlights.destroy',$heighlight) }}" class="delete_investigation btn-sm btn btn-label-danger btn-bold">
+                                <a href="{{ route('company_heighlights.destroy',$company_heighlight) }}" class="delete_investigation btn-sm btn btn-label-danger btn-bold">
                                     <i class="la la-trash-o"></i>
                                     حذف
                                 </a>

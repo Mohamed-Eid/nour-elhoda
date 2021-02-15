@@ -17,6 +17,7 @@ class CreateCompanyHeighlightsTable extends Migration
             $table->id();
             
             $table->string('image');
+            $table->string('type')->nullable();
 
             $table->timestamps();
         });
