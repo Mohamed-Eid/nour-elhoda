@@ -132,6 +132,7 @@ class ProjectController extends Controller
         
         if($request->old_investigations){
             foreach ($request->old_investigations as $key => $value) {
+                $data = [];
                 $old_inv = Investigation::find($key);
                 $data['ar']['name'] = $value['ar_name'];
                 $data['en']['name'] = $value['en_name'];
@@ -153,6 +154,7 @@ class ProjectController extends Controller
 
         if($request->old_videos){
             foreach ($request->old_videos as $key => $value) {
+                $data = [];
                 $old_video = Video::find($key);
                 $data['ar']['name'] = $value['ar_name'];
                 $data['en']['name'] = $value['en_name'];

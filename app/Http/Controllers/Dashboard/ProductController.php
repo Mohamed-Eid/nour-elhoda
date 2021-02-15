@@ -137,6 +137,7 @@ class ProductController extends Controller
         
         if($request->old_heighlights){
             foreach ($request->old_heighlights as $key => $value) {
+                $data = [];
                 $old_inv = Heighlight::find($key);
                 $data['ar']['name'] = $value['ar_name'];
                 $data['en']['name'] = $value['en_name'];
@@ -154,6 +155,7 @@ class ProductController extends Controller
 
         if($request->old_integrations){
             foreach ($request->old_integrations as $key => $value) {
+                $data = [];
                 $old_video = Integration::find($key);
                 if(isset($value['image'])){
                     if ($old_inv->image != 'default.png' ) {
