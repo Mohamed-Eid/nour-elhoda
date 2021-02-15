@@ -174,10 +174,9 @@
                             <div class="form-group form-group-last" id="kt_repeater_2">
                                 <div data-repeater-list="integrations" class="col-12">
                                     <div data-repeater-item class="form-group align-items-center">
-                                        <div class="col-12 d-flex" style="display: none;">
+                                        <div class="col-12 d-flex">
                                             <div class="row">
                                                 <div class="col-4">
-
                                                     <div class="form-group ">
                                                         <input id="pro_img" name="image" type="file" onchange="readURL(this);" />
                                                         <img class="image-preview" width="150px" height="100px" src="{{ asset('assets/media/users/300_14.jpg') }}" alt="your image" />

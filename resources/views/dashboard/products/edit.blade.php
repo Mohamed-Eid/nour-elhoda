@@ -104,19 +104,19 @@
                         <!-- START:: TITLE -->
                         <div class="kt-portlet__head col-12">
                             <div class="kt-portlet__head-label d-flex justify-content-between w-100">
-                                <h3 class="kt-portlet__head-title text-center" style="width: 100%">  الاستثمار </h3>
+                                <h3 class="kt-portlet__head-title text-center" style="width: 100%">  هاي لايتس </h3>
                             </div>
                         </div>
                         <!--END:: TITLE-->
 
 
-                        @foreach ($product->heighlights as $investigation)
+                        @foreach ($product->heighlights as $heighlight)
                         <div class="row">
                             <div class="col-4">
 
                                 <div class="form-group ">
-                                    <input id="pro_img" name="old_heighlights[{{ $investigation->id }}][image]" type="file" onchange="readURL(this);" />
-                                    <img class="image-preview" width="150px" height="100px" src="{{ $investigation->image_path }}" alt="your image" />
+                                    <input id="pro_img" name="old_heighlights[{{ $heighlight->id }}][image]" type="file" onchange="readURL(this);" />
+                                    <img class="image-preview" width="150px" height="100px" src="{{ $heighlight->image_path }}" alt="your image" />
                                 </div>
                             </div>
 
@@ -124,18 +124,18 @@
                                 <div class="input-group-prepend col-12 my-2">
                                     <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
                                     </span>
-                                    <input type="text" name="old_heighlights[{{ $investigation->id }}][ar_name]" value="{{ $investigation->translate('ar')->name }}" class="form-control d-block" placeholder="الاسم باللغة العربية">
+                                    <input type="text" name="old_heighlights[{{ $heighlight->id }}][ar_name]" value="{{ $heighlight->translate('ar')->name }}" class="form-control d-block" placeholder="الاسم باللغة العربية">
                                 </div>
 
                                 <div class="input-group-prepend col-12 my-2">
                                     <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
                                     </span>
-                                    <input type="text" name="old_heighlights[{{ $investigation->id }}][en_name]" value="{{ $investigation->translate('en')->name }}" class="form-control d-block" placeholder="الاسم باللغة الانجليزيه">
+                                    <input type="text" name="old_heighlights[{{ $heighlight->id }}][en_name]" value="{{ $heighlight->translate('en')->name }}" class="form-control d-block" placeholder="الاسم باللغة الانجليزيه">
                                 </div>
                             </div>
 
                             <div class="kt-form__group--inline col-2 mt-2">
-                                <a href="{{ route('heighlights.destroy',$investigation) }}" class="delete_investigation btn-sm btn btn-label-danger btn-bold">
+                                <a href="{{ route('heighlights.destroy',$heighlight) }}" class="delete_investigation btn-sm btn btn-label-danger btn-bold">
                                     <i class="la la-trash-o"></i>
                                     حذف
                                 </a>
@@ -201,36 +201,42 @@
                         <div class="kt-portlet__body col-12">
 
                             <div class="kt-form__section kt-form__section--first">
-                                <h3 class="kt-portlet__head-title text-center" style="width: 100%">  الفيديوهات </h3>
+                                <h3 class="kt-portlet__head-title text-center" style="width: 100%">  انتجريشنز </h3>
 
-                                @foreach ($product->integrations as $video)
+                                @foreach ($product->integrations as $integration)
                                 <div class="col-12 d-flex">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="form-group ">
+                                                <input id="pro_img" name="image" type="file" onchange="readURL(this);" />
+                                                <img class="image-preview" width="150px" height="100px" src="{{ asset('assets/media/users/300_14.jpg') }}" alt="your image" />
+                                            </div>
+                                        </div>
 
-                                    <div class="kt-form__group--inline col-4">
-                                        <div class="input-group-prepend col-12 my-2">
-                                            <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
-                                            </span>
-                                            <input type="text" name="old_integrations[{{ $video->id }}][ar_name]" value="{{ $video->translate('ar')->name }}"  class="form-control d-block" placeholder="إسم الفيديو باللغة العربية">
-                                        </div>
-                                    </div>
-                                    <div class="kt-form__group--inline col-4">
-                                        <div class="input-group-prepend col-12 my-2">
-                                            <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
-                                            </span>
-                                            <input type="text" name="old_integrations[{{ $video->id }}][en_name]" value="{{ $video->translate('en')->name }}" class="form-control d-block" placeholder="إسم الفيديو باللغة الانجليزيه">
+                                        <div class="col-8">
+                                            <div class="input-group-prepend col-12 my-2">
+                                                <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
+                                                </span>
+                                                <input type="text" name="old_integrations[{{ $integration->id }}][ar_name]" value="{{ $integration->translate('ar')->name }}" class="form-control d-block" placeholder="الاسم باللغة العربية">
+                                            </div>
+        
+                                            <div class="input-group-prepend col-12 my-2">
+                                                <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
+                                                </span>
+                                                <input type="text" name="old_integrations[{{ $integration->id }}][en_name]" value="{{ $integration->translate('en')->name }}" class="form-control d-block" placeholder="الاسم باللغة الانجليزيه">
+                                            </div>
+                                            
+                                            <div class="input-group-prepend col-12 my-2">
+                                                <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
+                                                </span>
+                                                <input type="text" name="old_integrations[{{ $integration->id }}][url]" value="{{ $integration->url }}" class="form-control d-block" placeholder="لينك الفيديو">
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="kt-form__group--inline col-3">
-                                        <div class="input-group-prepend col-12 my-2">
-                                            <span class="input-group-text"> <i class="la la-pencil" style="font-size: 18px"></i>
-                                            </span>
-                                            <input type="text" name="old_integrations[{{ $video->id }}][url]" value="{{ $video->url }}" class="form-control d-block" placeholder="لينك الفيديو">
-                                        </div>
-                                    </div>
 
                                     <div class="kt-form__group--inline col-1 mt-2">
-                                        <a href="{{ route('integrations.destroy',$video) }}" class="delete_investigation btn-sm btn btn-label-danger btn-bold">
+                                        <a href="{{ route('integrations.destroy',$integration) }}" class="delete_investigation btn-sm btn btn-label-danger btn-bold">
                                             <i class="la la-trash-o"></i>
                                             حذف
                                         </a>
@@ -238,6 +244,7 @@
 
                                     <div class="d-md-none kt-margin-b-10"></div>
                                 </div>
+
                                 @endforeach
 
                                 <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>

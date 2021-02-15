@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Heighlight;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProductRequst;
+use App\Integration;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -43,7 +45,7 @@ class ProductController extends Controller
         $product_data['header'] = upload_image_without_resize('products',$request->header);
         $product = Product::create($product_data);
 
-        //TODO:: validate investigations , videos
+        //TODO:: validate heighlights , videos
         if($request->heighlights){
             foreach ($this->process_heighlights($request) as $investigation) {
                 $product->heighlights()->create($investigation);
@@ -111,7 +113,62 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        $product_data = $request->except('_token','heighlights','videos','image','header','integrations','old_integrations','old_heighlights');
+        if($request->image){
+            $product_data['image'] = upload_image_without_resize('products',$request->image);
+        }
+        if($request->header){
+            $product_data['header'] = upload_image_without_resize('products',$request->header);
+        }
         
+        $product->update($product_data);
+
+        //TODO:: validate heighlights , videos
+        if($request->heighlights){
+            foreach ($this->process_heighlights($request) as $investigation) {
+                $product->heighlights()->create($investigation);
+            }
+        }
+        if($request->integrations){
+            foreach ($this->process_integrations($request) as $investigation) {
+                $product->integrations()->create($investigation);
+            }
+        }
+        
+        if($request->old_heighlights){
+            foreach ($request->old_heighlights as $key => $value) {
+                $old_inv = Heighlight::find($key);
+                $data['ar']['name'] = $value['ar_name'];
+                $data['en']['name'] = $value['en_name'];
+                if(isset($value['image'])){
+                    if ($old_inv->image != 'default.png' ) {
+                        delete_image('heighlights', $old_inv->image);
+                    }
+                    $data['image'] = upload_image_without_resize('heighlights',$value['image']);
+                }
+                $old_inv->update($data);
+            }
+        }
+        
+
+
+        if($request->old_integrations){
+            foreach ($request->old_integrations as $key => $value) {
+                $old_video = Integration::find($key);
+                if(isset($value['image'])){
+                    if ($old_inv->image != 'default.png' ) {
+                        delete_image('integrations', $old_inv->image);
+                    }
+                    $data['image'] = upload_image_without_resize('integrations',$value['image']);
+                }
+                $data['ar']['name'] = $value['ar_name'];
+                $data['en']['name'] = $value['en_name'];
+                $data['url']        = $value['url'];
+                $old_video->update($data);
+            }
+        }
+
+        return redirect()->back()->with('success','تم الحفظ بنجاح');
     }
 
     /**

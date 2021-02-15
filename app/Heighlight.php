@@ -15,4 +15,8 @@ class Heighlight extends Model implements TranslatableContract
     protected $guarded = [];
 
     protected  $appends = ['image_path',];
+
+    public  function getImagePathAttribute(){
+        return asset('uploads/heighlights/'.$this->image);
+    }
 }
