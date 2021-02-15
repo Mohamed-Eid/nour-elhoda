@@ -101,11 +101,30 @@
                             </li>
 
                             <li class="kt-menu__item" aria-haspopup="false">
-                                <a href="usersList.php" class="kt-menu__link ">
+                                <a href="{{ route('users.index') }}" class="kt-menu__link ">
                                     <i class="kt-menu__link-icon la la-user la-2x" style="font-size: 20px"></i>
                                     <span class="kt-menu__link-text">إدارة المستخدمين</span>
                                 </a>
                             </li>
+                            <li class="kt-menu__item" aria-haspopup="false">
+                                <a href="{{ route('projects.index') }}" class="kt-menu__link ">
+                                    <i class="kt-menu__link-icon la la-user la-2x" style="font-size: 20px"></i>
+                                    <span class="kt-menu__link-text">إدارة المشاريع</span>
+                                </a>
+                            </li>
+                            <li class="kt-menu__item" aria-haspopup="false">
+                                <a href="{{ route('products.index') }}" class="kt-menu__link ">
+                                    <i class="kt-menu__link-icon la la-user la-2x" style="font-size: 20px"></i>
+                                    <span class="kt-menu__link-text">إدارة المنتجات</span>
+                                </a>
+                            </li>
+                            <li class="kt-menu__item" aria-haspopup="false">
+                                <a href="{{ route('articles.index') }}" class="kt-menu__link ">
+                                    <i class="kt-menu__link-icon la la-user la-2x" style="font-size: 20px"></i>
+                                    <span class="kt-menu__link-text">إدارة المقالات</span>
+                                </a>
+                            </li>
+
 
                             <li class="kt-menu__item"  aria-haspopup="true">
                                 <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
