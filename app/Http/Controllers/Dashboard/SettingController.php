@@ -15,6 +15,9 @@ class SettingController extends Controller
     public function about(){
         return view('dashboard.settings.about');
     }
+    public function home(){
+        return view('dashboard.settings.home');
+    }
 
     
     private function process_heighlights(Request $request){
@@ -23,12 +26,13 @@ class SettingController extends Controller
             $data[$key]['ar']['name'] = $investigation['ar_name'];
             $data[$key]['en']['name'] = $investigation['en_name'];
             $data[$key]['image']      = upload_image_without_resize('settings',$investigation['image']);
+            $data[$key]['type']       = $request->h_type;
         }
         return $data;
     }
     public function update(Request $request){
         // dd($request->all());
-        foreach ($request->except(['_token','_method','company_heighlights','old_heighlights']) as $key => $value) {
+        foreach ($request->except(['_token','_method','company_heighlights','old_heighlights','h_type']) as $key => $value) {
             //dd($key);
             $setting = Setting::find($key);
             if($setting->type == "image"){
