@@ -41,7 +41,7 @@
     <!-- START:: NAVBAR -->
     <nav id="navBar" class="d-flex justify-content-between px-3">
         <div class="nav-icon">
-            <a href="index.php">
+            <a href="{{ route('frontend.home') }}">
                 <img src="{{ asset('frontend/assets/pics/logo.png') }}">
             </a>
         </div>
@@ -49,11 +49,11 @@
         <div class="nav-links">
             <ul class="menu-container list-unstyled d-flex align-items-center ">
                 <li class="menu-item mx-3">
-                    <a href="index.php" class="active"> Home </a>
+                    <a href="{{ route('frontend.home') }}" class="active"> Home </a>
                 </li>
 
                 <li class="menu-item mx-3">
-                    <a href="AboutUs.php"> About Us </a>
+                    <a href="{{ route('frontend.about_us') }}"> About Us </a>
                 </li>
 
                 <li class="menu-item mx-3">

@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Frontend\HomeController@index')->name('frontend.home');
+Route::get('/about_us', function(){
+    return view('frontend.about');
+})->name('frontend.about_us');
 
+Route::resource('projects', 'Frontend\ProjectController')->only(['index', 'show']);
 
 
 //AdminPanel Routes
