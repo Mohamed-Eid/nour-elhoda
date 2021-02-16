@@ -105,6 +105,8 @@
 <!-- START:: INCLUDING MAIN JS FILE -->
 <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
 <!-- END:: INCLUDING MAIN JS FILE -->
+
+@stack('scripts')
 </body>
 
 </html>

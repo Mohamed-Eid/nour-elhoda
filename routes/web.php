@@ -19,7 +19,7 @@ Route::get('/about_us', function(){
 })->name('frontend.about_us');
 
 Route::resource('projects', 'Frontend\ProjectController')->only(['index', 'show']);
-
+Route::get('get_more_projects','Frontend\ProjectController@more')->name('more_projects');
 
 //AdminPanel Routes
 Route::group(['prefix' => 'admin'], function () {

@@ -14,10 +14,15 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::paginate(9);
         return view('frontend.projects.index',compact('projects'));
     }
 
+    public function more(){
+        $page = request()->page;
+        $projects = Project::take($page*9)->get();
+        return view('frontend.projects.ajax',compact('projects'));
+    }
 
     /**
      * Display the specified resource.
