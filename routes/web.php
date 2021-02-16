@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Frontend\HomeController@index')->name('frontend.home');
 
+
+
+//AdminPanel Routes
 Route::group(['prefix' => 'admin'], function () {
     Auth::routes();
     Route::middleware(['auth'])->group(function () {

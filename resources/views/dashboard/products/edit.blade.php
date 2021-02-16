@@ -208,8 +208,8 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <div class="form-group ">
-                                                <input id="pro_img" name="image" type="file" onchange="readURL(this);" />
-                                                <img class="image-preview" width="150px" height="100px" src="{{ asset('assets/media/users/300_14.jpg') }}" alt="your image" />
+                                                <input id="pro_img" name="old_integrations[{{ $integration->id }}][image]" type="file" onchange="readURL(this);" />
+                                                <img class="image-preview" width="150px" height="100px" src="{{ $integration->image_path }}" alt="your image" />
                                             </div>
                                         </div>
 

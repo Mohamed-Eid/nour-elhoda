@@ -16,6 +16,14 @@ class Article extends Model implements TranslatableContract
     protected $guarded = [];
 
 
+    public function formated_date(){
+        return $this->created_at->format('j, M');
+    }
+
+    public function words(int $words_count){
+        return \Illuminate\Support\Str::words(strip_tags($this->description) , $words_count);
+    }
+
     public function videos()
     {
         return $this->morphMany(Video::class, 'videoable');

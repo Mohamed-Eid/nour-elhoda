@@ -113,6 +113,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        // dd($request->all());
         $product_data = $request->except('_token','heighlights','videos','image','header','integrations','old_integrations','old_heighlights');
         if($request->image){
             $product_data['image'] = upload_image_without_resize('products',$request->image);

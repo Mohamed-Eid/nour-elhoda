@@ -8,6 +8,11 @@ function folder_path($path){
     }
 }
 
+function get_video_id($link){
+    preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $link, $match);
+    return $match[1];
+}
+
 /**
  * Store a newly created resource in storage.
  *
