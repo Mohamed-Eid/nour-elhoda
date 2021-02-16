@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\CompanyHeighlight;
 use App\Http\Controllers\Controller;
 use App\Setting;
+use App\Slider;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -30,9 +31,16 @@ class SettingController extends Controller
         }
         return $data;
     }
+    private function process_slider(Request $request){
+        $data = [];
+        foreach ($request->slider as $key => $slider_img) {
+            $data[$key]['image']      = upload_image_without_resize('slider',$slider_img['image']);
+        }
+        return $data;
+    }
     public function update(Request $request){
         // dd($request->all());
-        foreach ($request->except(['_token','_method','company_heighlights','old_heighlights','h_type']) as $key => $value) {
+        foreach ($request->except(['_token','_method','company_heighlights','old_heighlights','h_type','slider','old_slider']) as $key => $value) {
             //dd($key);
             $setting = Setting::find($key);
             if($setting->type == "image"){
@@ -49,6 +57,25 @@ class SettingController extends Controller
         if($request->company_heighlights){
             foreach ($this->process_heighlights($request) as $investigation) {
                 CompanyHeighlight::create($investigation);
+            }
+        }
+        if($request->slider){
+            foreach ($this->process_slider($request) as $slide_img) {
+                Slider::create($slide_img);
+            }
+        }
+
+        if($request->old_slider){
+            foreach ($request->old_slider as $key => $value) {
+                $data = [];
+
+                $old_slider = Slider::find($key);
+
+                if(isset($value['image'])){
+                    delete_image('slider', $old_slider->image);
+                    $data['image'] = upload_image_without_resize('slider',$value['image']);
+                }
+                $old_slider->update($data);
             }
         }
 
