@@ -15,13 +15,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(2);
+        $products = Product::paginate(6);
         return view('frontend.products.index',compact('products'));
     }
 
     public function more(){
         $page = request()->page;
-        $products = Product::take($page*2)->get();
+        $products = Product::take($page*6)->get();
         return view('frontend.products.ajax',compact('products'));
     }
 

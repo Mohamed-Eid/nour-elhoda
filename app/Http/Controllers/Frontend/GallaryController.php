@@ -16,7 +16,7 @@ class GallaryController extends Controller
     public function index(Request $request)
     {
         $page = $request->page ?? 1;
-        $paginator = 2;
+        $paginator = 6;
         $gallaries = Gallary::skip(0)->take($page*$paginator)->get();
         return view('frontend.gallaries.index',compact('gallaries','page'));
     }

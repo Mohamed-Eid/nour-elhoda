@@ -21,7 +21,7 @@ class ArticleController extends Controller
 
     public function more(){
         $page = request()->page;
-        $articles = Article::take($page*2)->get();
+        $articles = Article::take($page*6)->get();
         return view('frontend.articles.ajax',compact('articles'));
     }
 
