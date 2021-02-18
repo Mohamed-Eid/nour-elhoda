@@ -23,6 +23,7 @@ Route::name('frontend.')->group(function(){
     Route::resource('products', 'Frontend\ProductController')->only(['index', 'show']);
     Route::resource('articles', 'Frontend\ArticleController')->only(['index', 'show']);
     Route::resource('gallaries', 'Frontend\GallaryController')->only(['index', 'show']);
+    Route::resource('contact', 'Frontend\ContactController')->only(['index' , 'store']);
     Route::get('videos', 'Frontend\VideoController')->name('videos.index');
 });
 

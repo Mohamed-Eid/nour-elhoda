@@ -106,6 +106,10 @@
 <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
 <!-- END:: INCLUDING MAIN JS FILE -->
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+@include('dashboard.layouts.includes.partials._session')
+
 @stack('scripts')
 </body>
 

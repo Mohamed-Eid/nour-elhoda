@@ -77,7 +77,7 @@
                 </li>
 
                 <li class="menu-item mx-3">
-                    <a href="ContactUs.php"> Contact Us </a>
+                    <a href="{{ route('frontend.contact.index') }}"> Contact Us </a>
                 </li>
             </ul>
         </div>
