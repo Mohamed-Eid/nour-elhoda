@@ -81,7 +81,7 @@ function is_current_route($route){
 }
 
 function is_active($route){
-    return is_current_route($route) ? 'side-menu--active' : '';
+    return is_current_route($route) ? 'active' : '';
 }
 
 
