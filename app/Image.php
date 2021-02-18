@@ -11,7 +11,7 @@ class Image extends Model
     protected $guarded = [];
     
     public  function getImagePathAttribute(){
-        return asset('uploads/gallary/'.$this->image);
+        return asset('uploads/gallaries/'.$this->image);
     }
 
     public function gallary(){

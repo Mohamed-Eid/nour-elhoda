@@ -17,7 +17,7 @@ class Gallary extends Model implements TranslatableContract
     protected $guarded = [];
     
     public  function getImagePathAttribute(){
-        return asset('uploads/gallary/'.$this->image);
+        return asset('uploads/gallaries/'.$this->image);
     }
 
     public function images(){
