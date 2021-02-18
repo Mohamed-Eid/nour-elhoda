@@ -21,10 +21,12 @@ Route::get('/about_us', function(){
 Route::name('frontend.')->group(function(){
     Route::resource('projects', 'Frontend\ProjectController')->only(['index', 'show']);
     Route::resource('products', 'Frontend\ProductController')->only(['index', 'show']);
+    Route::resource('articles', 'Frontend\ArticleController')->only(['index', 'show']);
 });
 
 Route::get('get_more_projects','Frontend\ProjectController@more')->name('more_projects');
 Route::get('get_more_products','Frontend\ProductController@more')->name('more_products');
+Route::get('get_more_articles','Frontend\ArticleController@more')->name('more_articles');
 
 //AdminPanel Routes
 Route::group(['prefix' => 'admin'], function () {
