@@ -125,6 +125,13 @@
                                 </a>
                             </li>
 
+                            <li class="kt-menu__item" aria-haspopup="false">
+                                <a href="{{ route('videos.index') }}" class="kt-menu__link ">
+                                    <i class="kt-menu__link-icon la la-user la-2x" style="font-size: 20px"></i>
+                                    <span class="kt-menu__link-text">إدارة الفيديوهات</span>
+                                </a>
+                            </li>
+
 
                             <li class="kt-menu__item"  aria-haspopup="true">
                                 <a href="javascript:;" class="kt-menu__link kt-menu__toggle">

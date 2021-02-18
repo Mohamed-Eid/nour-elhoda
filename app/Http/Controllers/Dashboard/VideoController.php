@@ -15,7 +15,8 @@ class VideoController extends Controller
      */
     public function index()
     {
-        //
+        $videos = Video::all();
+        return view('dashboard.videos.index',compact('videos'));
     }
 
     /**
@@ -25,7 +26,7 @@ class VideoController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.videos.create');
     }
 
     /**
@@ -36,19 +37,15 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //TODO:: validate request
+        $data = $request->except('project_videoable_id','article_videoable_id');
+        // $data = $request->all();
+        $data['videoable_id'] = $request->videoable_type == null ? null :  ($request->videoable_type == "App\Project" ? $request->project_videoable_id : $request->article_videoable_id)  ;
+        // dd($data);
+        Video::create($data);
+        return redirect()->back()->with('success','تم إضافة فيديو بنجاح');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -56,9 +53,9 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Video $video)
     {
-        //
+        return view('dashboard.videos.edit',compact('video'));
     }
 
     /**
@@ -68,9 +65,15 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Video $video)
     {
-        //
+        //TODO:: validate request
+        $data = $request->except('project_videoable_id','article_videoable_id');
+        // $data = $request->all();
+        $data['videoable_id'] = $request->videoable_type == null ? null :  ($request->videoable_type == "App\Project" ? $request->project_videoable_id : $request->article_videoable_id)  ;
+        // dd($data);
+        $video->update($data);
+        return redirect()->back()->with('success','تم تعديل فيديو بنجاح');
     }
 
     /**

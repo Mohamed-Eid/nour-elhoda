@@ -234,12 +234,22 @@ $(document).ready( function () {
 
   // START:: ADD SYSTEM USER INFO
   $('.system-user').css('display', 'none');
+  $('.system-article').css('display', 'none');
+  $('.videoable_type').val('');
   $('#system-user-status-selector').on('change', function() {
     let optionValue = $('#system-user-status-selector').children('option:checked').val();
     if( optionValue == 0 ) {
       $('.system-user').css('display', 'none');
+      $('.system-article').css('display', 'none');
     } else if ( optionValue == 1 ) {
-      $('.system-user').css('display', 'block');
+      $('.system-user').show();
+      $('.system-article').hide();
+      $('.videoable_type').val("App\\Project");
+    }else if (optionValue == 2){
+      $('.system-user').hide();
+      $('.system-article').show();
+      $('.videoable_type').val("App\\Article");
+
     }
   });
   // END:: ADD SYSTEM USER INFO
