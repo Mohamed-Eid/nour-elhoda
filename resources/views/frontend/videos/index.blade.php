@@ -49,12 +49,6 @@
                         <h4 class="text-center"> {{$video->name}} </h4>
                     </div>
                     @endforeach
-
-
-
-                    <div class="col-12 text-center">
-                        <button id="add_addition" class="hover-effect">Load More Videos</button>
-                    </div>
                 </div>
             </div>
             <!-- END:: TAB CONTENT SHEET -->
@@ -72,10 +66,6 @@
                     </div>
                     @endforeach
 
-                    <div class="col-12 text-center">
-                        <button id="add_addition" class="hover-effect">Load More Videos</button>
-                    </div>
-
                 </div>
             </div>
             <!-- END:: TAB CONTENT SHEET -->
@@ -92,11 +82,11 @@
                         <h4 class="text-center"> {{ $video->name }} </h4>
                     </div>
                     @endforeach
-
-                    <div class="col-12 text-center">
-                        <button id="add_addition" class="hover-effect">Load More Videos</button>
-                    </div>
                 </div>
+            </div>
+
+            <div class="col-12 text-center">
+                <a href="{{ route('frontend.videos.index') }}?page={{ $page + 1 }}" class="hover-effect">Load More Videos</a>
             </div>
             <!-- END:: TAB CONTENT SHEET -->
         </div>
