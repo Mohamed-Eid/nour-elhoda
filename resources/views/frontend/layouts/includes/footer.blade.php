@@ -8,17 +8,17 @@
 
             <div class="short-cuts col-6 col-md-3">
                 <div>
-                    <a href="index.php"> Home </a>
-                    <a href="AboutUs.php"> About Us </a>
-                    <a href="Projects.php"> Projects </a>
-                    <a href="Gallery.php"> Gallery </a>
+                    <a href="{{ route('frontend.home') }}"> Home </a>
+                    <a href="{{ route('frontend.about_us') }}"> About Us </a>
+                    <a href="{{ route('frontend.projects.index') }}"> Projects </a>
+                    <a href="{{ route('frontend.gallaries.index') }}"> Gallery </a>
                 </div>
 
                 <div>
-                    <a href="Products.php"> Products </a>
-                    <a href="AllNews.php"> News </a>
-                    <a href="VideosLiberary.php"> Video Liberary </a>
-                    <a href="ContactUs.php"> Contact Us </a>
+                    <a href="{{ route('frontend.products.index') }}"> Products </a>
+                    <a href="{{ route('frontend.articles.index') }}"> News </a>
+                    <a href="{{ route('frontend.videos.index') }}"> Video Liberary </a>
+                    <a href="{{ route('frontend.contact.index') }}"> Contact Us </a>
                 </div>
             </div>
 
@@ -26,25 +26,25 @@
                 <h5 class="text-center my-3"> Follow Us </h5>
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#" class="facebook">
+                        <a href="{{ get_setting_by_key('facebook')->one_value}}" class="facebook">
                             <i class="fab fa-facebook-square"></i>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="instagram">
+                        <a href="{{ get_setting_by_key('instagram')->one_value}}" class="instagram">
                             <i class="fab fa-instagram-square"></i>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="youtube">
+                        <a href="{{ get_setting_by_key('youtube')->one_value}}" class="youtube">
                             <i class="fab fa-youtube"></i>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="twitter">
+                        <a href="{{ get_setting_by_key('twitter')->one_value}}" class="twitter">
                             <i class="fab fa-twitter-square"></i>
                         </a>
                     </li>
