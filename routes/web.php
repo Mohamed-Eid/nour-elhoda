@@ -22,6 +22,7 @@ Route::name('frontend.')->group(function(){
     Route::resource('projects', 'Frontend\ProjectController')->only(['index', 'show']);
     Route::resource('products', 'Frontend\ProductController')->only(['index', 'show']);
     Route::resource('articles', 'Frontend\ArticleController')->only(['index', 'show']);
+    Route::get('videos', 'Frontend\VideoController')->name('videos.index');
 });
 
 Route::get('get_more_projects','Frontend\ProjectController@more')->name('more_projects');
