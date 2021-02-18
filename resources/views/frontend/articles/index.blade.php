@@ -23,7 +23,7 @@
                         <div class="card-text mb-4"> {!! $article->words(20)  !!} </div>
 
                         <!-- ArticleDetails.php -->
-                        @include('frontend.layouts.includes._main_btn',['link'=>route('frontend.articles.show',$article),'title'=>'More Details'])
+                        @include('frontend.layouts.includes._main_btn',['link'=>route('frontend.news.show',$article),'title'=>'More Details'])
 
                     </div>
                 </div>

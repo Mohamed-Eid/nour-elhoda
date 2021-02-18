@@ -89,7 +89,7 @@
                         <iframe src="https://www.youtube.com/embed/{{$video->get_id()}}" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
-                        <h4 class="text-center"> {{$video->name}} </h4>
+                        <h4 class="text-center"> {{ $video->name }} </h4>
                     </div>
                     @endforeach
 
