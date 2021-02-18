@@ -93,47 +93,56 @@
                         data-ktmenu-dropdown-timeout="500">
                         <ul class="kt-menu__nav ">
 
-                            <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
-                                <a href="index.php" class="kt-menu__link ">
+                            <li class="kt-menu__item  {{ is_admin_active('home') }}" aria-haspopup="true">
+                                <a href="{{ route('home') }}" class="kt-menu__link ">
                                     <i class="kt-menu__link-icon la la-home la-2x"></i>
                                     <span class="kt-menu__link-text">الرئيسية</span>
                                 </a>
                             </li>
 
-                            <li class="kt-menu__item" aria-haspopup="false">
+                            <li class="kt-menu__item {{ is_admin_active('users.index') }}" aria-haspopup="false">
                                 <a href="{{ route('users.index') }}" class="kt-menu__link ">
                                     <i class="kt-menu__link-icon la la-user la-2x" style="font-size: 20px"></i>
                                     <span class="kt-menu__link-text">إدارة المستخدمين</span>
                                 </a>
                             </li>
-                            <li class="kt-menu__item" aria-haspopup="false">
+
+                            <li class="kt-menu__item {{ is_admin_active('projects.index') }}" aria-haspopup="false">
                                 <a href="{{ route('projects.index') }}" class="kt-menu__link ">
-                                    <i class="kt-menu__link-icon la la-user la-2x" style="font-size: 20px"></i>
+                                    <i class="kt-menu__link-icon la la-archive la-2x" style="font-size: 20px"></i>
                                     <span class="kt-menu__link-text">إدارة المشاريع</span>
                                 </a>
                             </li>
-                            <li class="kt-menu__item" aria-haspopup="false">
+
+                            <li class="kt-menu__item {{ is_admin_active('products.index') }}" aria-haspopup="false">
                                 <a href="{{ route('products.index') }}" class="kt-menu__link ">
-                                    <i class="kt-menu__link-icon la la-user la-2x" style="font-size: 20px"></i>
+                                    <i class="kt-menu__link-icon la la-folder-open la-2x" style="font-size: 20px"></i>
                                     <span class="kt-menu__link-text">إدارة المنتجات</span>
                                 </a>
                             </li>
-                            <li class="kt-menu__item" aria-haspopup="false">
+
+                            <li class="kt-menu__item {{ is_admin_active('articles.index') }}" aria-haspopup="false">
                                 <a href="{{ route('articles.index') }}" class="kt-menu__link ">
-                                    <i class="kt-menu__link-icon la la-user la-2x" style="font-size: 20px"></i>
+                                    <i class="kt-menu__link-icon la la-file-text la-2x" style="font-size: 20px"></i>
                                     <span class="kt-menu__link-text">إدارة المقالات</span>
                                 </a>
                             </li>
 
-                            <li class="kt-menu__item" aria-haspopup="false">
+                            <li class="kt-menu__item {{ is_admin_active('videos.index') }}" aria-haspopup="false">
                                 <a href="{{ route('videos.index') }}" class="kt-menu__link ">
-                                    <i class="kt-menu__link-icon la la-user la-2x" style="font-size: 20px"></i>
+                                    <i class="kt-menu__link-icon la la-video-camera la-2x" style="font-size: 20px"></i>
                                     <span class="kt-menu__link-text">إدارة الفيديوهات</span>
+                                </a>
+                            </li>
+                            <li class="kt-menu__item {{ is_admin_active('gallaries.index') }}" aria-haspopup="false">
+                                <a href="{{ route('gallaries.index') }}" class="kt-menu__link ">
+                                    <i class="kt-menu__link-icon la la-image la-2x" style="font-size: 20px"></i>
+                                    <span class="kt-menu__link-text">إدارة ألبومات الصور</span>
                                 </a>
                             </li>
 
 
-                            <li class="kt-menu__item"  aria-haspopup="true">
+                            <li class="kt-menu__item "  aria-haspopup="true">
                                 <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                                     <i class="kt-menu__link-icon la la-gear" style="font-size: 20px"></i>
                                     <span class="kt-menu__link-text">الإعدادات</span>
@@ -142,14 +151,18 @@
                                 <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
                                     <ul class="kt-menu__subnav">
 
-                                        <li class="kt-menu__item">
+                                        <li class="kt-menu__item {{ is_admin_active('settings.contact') }}">
                                             <a href="{{ route('settings.contact') }}" class="kt-menu__link kt-menu__toggle"> إعدادات التواصل </a>
                                         </li>
 
                                         <li class="kt-menu__item">
-                                            <a href="packages.php" class="kt-menu__link kt-menu__toggle"> باقات الإستضافات </a>
+                                            <a href="{{ route('settings.about') }}" class="kt-menu__link kt-menu__toggle"> من نحن</a>
+                                        </li>
+                                        <li class="kt-menu__item">
+                                            <a href="{{ route('settings.home') }}" class="kt-menu__link kt-menu__toggle">إعدادات الصفحة الرئيسية</a>
                                         </li>
 
+                                        
                                     </ul>
                                 </div>
                             </li>

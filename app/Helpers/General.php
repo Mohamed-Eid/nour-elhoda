@@ -84,6 +84,10 @@ function is_active($route){
     return is_current_route($route) ? 'active' : '';
 }
 
+function is_admin_active($route){
+    return is_current_route($route) ? 'kt-menu__item--active' : '';
+}
+
 
 function process_videos(Illuminate\Http\Request $request){
     $data = [];
