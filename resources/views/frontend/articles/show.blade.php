@@ -52,7 +52,7 @@
         </div>
 
         <div class="col-12 text-center mt-5">
-            @include('frontend.layouts.includes._main_btn',['link'=>'#','title'=>'View More'])
+            @include('frontend.layouts.includes._main_btn',['link'=>route('frontend.videos.index'),'title'=>'View More'])
         </div>
     </div>
 </div>   

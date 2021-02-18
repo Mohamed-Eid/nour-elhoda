@@ -45,7 +45,7 @@
                 </p>
 
                 <!-- BTN NAME: LEARN MORE -->
-                @include('frontend.layouts.includes._main_btn',['link'=>'#','title'=>'Learn More'])
+                @include('frontend.layouts.includes._main_btn',['link'=>route('frontend.about_us'),'title'=>'Learn More'])
             </div>
 
         </div>
@@ -82,7 +82,7 @@
                     <h4 class="text-center my-4"> {{ get_setting_by_key('home_video')->value }}</h4>
 
                     <!-- BTN NAME: VIEW MORE VIDEOS -->
-                    @include('frontend.layouts.includes._main_btn',['link'=>'#','title'=>'View More Videos'])
+                    @include('frontend.layouts.includes._main_btn',['link'=>route('frontend.videos.index'),'title'=>'View More Videos'])
 
                 </div>
             </div>
@@ -115,7 +115,7 @@
 
 
             <div class="col-12 text-center mt-2">
-                @include('frontend.layouts.includes._main_btn',['link'=>'#','title'=>'More Projects'])
+                @include('frontend.layouts.includes._main_btn',['link'=>route('frontend.projects.index'),'title'=>'More Projects'])
             </div>
 
         </div>
@@ -130,37 +130,15 @@
         <h2 class="sec-heading mb-5"> Gallery </h2>
 
         <div id="gallery-slider" class="owl-carousel owl-theme">
+            @foreach (\App\Gallary::take(5)->get() as $gallary)
             <div class="gallery-slider-item">
-                <img src="assets/pics/pic20.jpg">
+                <img src="{{ $gallary->image_path }}">
             </div>
-
-            <div class="gallery-slider-item">
-                <img src="assets/pics/pic9.jpg">
-            </div>
-
-            <div class="gallery-slider-item">
-                <img src="assets/pics/pic11.jpg">
-            </div>
-
-            <div class="gallery-slider-item">
-                <img src="assets/pics/pic16.jpg">
-            </div>
-
-            <div class="gallery-slider-item">
-                <img src="assets/pics/pic19.jpg">
-            </div>
-
-            <div class="gallery-slider-item">
-                <img src="assets/pics/pic22.jpg">
-            </div>
-
-            <div class="gallery-slider-item">
-                <img src="assets/pics/pic18.jpg">
-            </div>
+            @endforeach
         </div>
 
         <div class="col-12 text-center mt-5">
-            @include('frontend.layouts.includes._main_btn',['link'=>'#','title'=>'View More'])
+            @include('frontend.layouts.includes._main_btn',['link'=>route('frontend.gallaries.index'),'title'=>'View More'])
         </div>
     </div>
 </div>
@@ -190,7 +168,7 @@
 
 
             <div class="col-12 text-center mt-2">
-                @include('frontend.layouts.includes._main_btn',['link'=>'#','title'=>'More Products'])
+                @include('frontend.layouts.includes._main_btn',['link'=>route('frontend.products.index'),'title'=>'More Products'])
             </div>
 
         </div>
@@ -218,7 +196,7 @@
                         <p class="card-text mb-4"> {!! $article->words(20)  !!} </p>
 
                         <!-- ArticleDetails.php -->
-                        @include('frontend.layouts.includes._main_btn',['link'=>'#','title'=>'More Details'])
+                        @include('frontend.layouts.includes._main_btn',['link'=>route('frontend.articles.show',$article),'title'=>'More Details'])
                     </div>
                 </div>
             </div>                
@@ -226,7 +204,7 @@
 
             <div class="col-12 text-center mt-5">
                 <!-- AllNews.php -->
-                @include('frontend.layouts.includes._main_btn',['link'=>'#','title'=>'View More Articles'])
+                @include('frontend.layouts.includes._main_btn',['link'=>route('frontend.articles.index'),'title'=>'View More Articles'])
 
             </div>
 

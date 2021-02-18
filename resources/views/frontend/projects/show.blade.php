@@ -89,7 +89,7 @@
             <h3 class="mb-0 col-12 col-md-8"> To Invest With Nour El Hooda? Please Contact Us </h3>
 
             <div class="col-12 col-md-4 text-center mt-4 mt-md-0">
-                @include('frontend.layouts.includes._main_btn',['link'=>'#','title'=>'Contact Us'])
+                @include('frontend.layouts.includes._main_btn',['link'=>route('frontend.contact.index'),'title'=>'Contact Us'])
             </div>
         </div>
     </div>
