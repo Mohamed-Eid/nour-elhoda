@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Project;
+use App\Product;
+use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,14 +15,14 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::paginate(2);
-        return view('frontend.projects.index',compact('projects'));
+        $products = Product::paginate(2);
+        return view('frontend.products.index',compact('products'));
     }
 
     public function more(){
         $page = request()->page;
-        $projects = Project::take($page*2)->get();
-        return view('frontend.projects.ajax',compact('projects'));
+        $products = Product::take($page*2)->get();
+        return view('frontend.products.ajax',compact('products'));
     }
 
     /**
@@ -31,9 +32,9 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function show(Project $project)
+    public function show(Product $product)
     {
-        return view('frontend.projects.show',compact('project'));
+        return view('frontend.products.show',compact('product'));
     }
 
 }

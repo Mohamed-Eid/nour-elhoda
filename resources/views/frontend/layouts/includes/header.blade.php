@@ -57,7 +57,7 @@
                 </li>
 
                 <li class="menu-item mx-3">
-                    <a href="Projects.php"> Projects </a>
+                    <a href="{{ route('frontend.projects.index') }}"> Projects </a>
                 </li>
 
                 <li class="menu-item mx-3">

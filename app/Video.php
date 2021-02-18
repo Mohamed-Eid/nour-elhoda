@@ -18,4 +18,9 @@ class Video extends Model implements TranslatableContract
     {
         return $this->morphTo();
     }
+
+    public function get_id(){
+        preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $this->url, $match);
+        return $match[1];
+    }
 }
