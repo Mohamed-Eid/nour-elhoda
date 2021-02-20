@@ -19,6 +19,9 @@ class SettingController extends Controller
     public function home(){
         return view('dashboard.settings.home');
     }
+    public function pages(){
+        return view('dashboard.settings.pages');
+    }
 
     
     private function process_heighlights(Request $request){

@@ -2,17 +2,13 @@
 
 @section('content')
 
-@include('frontend.layouts.includes._pages_header',['image'=>get_setting_by_key('about_header_image')->image_path])
+@include('frontend.layouts.includes._pages_header',['image'=>get_setting_by_key('videos_header')->image_path])
 
 <!-- START:: PAGE CONTENT -->
 <div class="videos-liberary">
     <div class="container">
         <h2 class="sec-heading mt-5"> Videos Liberary </h2>
-        <p class="mb-5 mt-3"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae neque qui voluptates
-            voluptas nesciunt facere dolore dolor reprehenderit quibusdam reiciendis praesentium iste, obcaecati at
-            fugiat laborum doloremque repellat consequuntur.Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Vitae neque qui voluptates voluptas nesciunt facere dolore dolor reprehenderit quibusdam reiciendis
-            praesentium iste, obcaecati at fugiat laborum doloremque repellat consequuntur. </p>
+        <div class="mb-5 mt-3"> {!! get_setting_by_key('videos_header')->value !!} </div>
 
         <!-- START:: TABS -->
         <ul class="nav nav-pills d-flex justify-content-center my-4" id="pills-tab" role="tablist">

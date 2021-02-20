@@ -158,8 +158,12 @@
                                         <li class="kt-menu__item">
                                             <a href="{{ route('settings.about') }}" class="kt-menu__link kt-menu__toggle"> من نحن</a>
                                         </li>
+
                                         <li class="kt-menu__item">
                                             <a href="{{ route('settings.home') }}" class="kt-menu__link kt-menu__toggle">إعدادات الصفحة الرئيسية</a>
+                                        </li>
+                                        <li class="kt-menu__item">
+                                            <a href="{{ route('settings.pages') }}" class="kt-menu__link kt-menu__toggle">إعدادات الصفحات</a>
                                         </li>
 
                                         

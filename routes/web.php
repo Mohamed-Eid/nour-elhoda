@@ -58,6 +58,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('contact','Dashboard\SettingController@contact')->name('settings.contact');
             Route::get('about','Dashboard\SettingController@about')->name('settings.about');
             Route::get('home','Dashboard\SettingController@home')->name('settings.home');
+            Route::get('pages','Dashboard\SettingController@pages')->name('settings.pages');
             Route::put('update','Dashboard\SettingController@update')->name('settings.update');
         });
     });

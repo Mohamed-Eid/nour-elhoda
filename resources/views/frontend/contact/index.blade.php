@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('frontend.layouts.includes._pages_header',['image'=>get_setting_by_key('about_header_image')->image_path])
+@include('frontend.layouts.includes._pages_header',['image'=>get_setting_by_key('contact_header')->image_path])
 
 
 <!-- START:: PAGE CONTENT -->
