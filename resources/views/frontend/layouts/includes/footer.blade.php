@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="footer-logo col-6 col-md-2">
-                <img src="{{ asset('frontend/assets/pics/logo.png') }}">
+                <img src="{{ get_setting_by_key('footer_logo')->image_path ?? asset('frontend/assets/pics/logo.png') }}">
             </div>
 
             <div class="short-cuts col-6 col-md-3">
@@ -57,17 +57,17 @@
                 <ul class="list-unstyled">
                     <li>
                         <i class="fas fa-map-marker-alt"></i>
-                        <span> El Doki, Giza, Egypt </span>
+                        <span> {{ get_setting_by_key('footer_location')->value }} </span>
                     </li>
 
                     <li>
                         <i class="fas fa-mobile-alt"></i>
-                        <span> 01000000001 </span>
+                        <span>  {{ get_setting_by_key('footer_mobile')->one_value }} </span>
                     </li>
 
                     <li>
                         <i class="fas fa-envelope"></i>
-                        <span> NourElHooda@localhost.com </span>
+                        <span>  {{ get_setting_by_key('footer_email')->one_value }} </span>
                     </li>
                 </ul>
             </div>

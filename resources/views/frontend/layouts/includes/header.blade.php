@@ -42,7 +42,7 @@
     <nav id="navBar" class="d-flex justify-content-between px-3">
         <div class="nav-icon">
             <a href="{{ route('frontend.home') }}">
-                <img src="{{ asset('frontend/assets/pics/logo.png') }}">
+                <img src="{{ get_setting_by_key('header_logo')->image_path ?? asset('frontend/assets/pics/logo.png') }}">
             </a>
         </div>
 

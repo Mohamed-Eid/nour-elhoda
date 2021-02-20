@@ -22,6 +22,9 @@ class SettingController extends Controller
     public function pages(){
         return view('dashboard.settings.pages');
     }
+    public function general(){
+        return view('dashboard.settings.general');
+    }
 
     
     private function process_heighlights(Request $request){
