@@ -8,22 +8,22 @@
 
             <div class="short-cuts col-6 col-md-3">
                 <div>
-                    <a href="{{ route('frontend.home') }}"> Home </a>
-                    <a href="{{ route('frontend.about_us') }}"> About Us </a>
-                    <a href="{{ route('frontend.projects.index') }}"> Projects </a>
-                    <a href="{{ route('frontend.gallaries.index') }}"> Gallery </a>
+                    <a href="{{ route('frontend.home') }}">@lang('site.Home')  </a>
+                    <a href="{{ route('frontend.about_us') }}"> @lang('site.About Us') </a>
+                    <a href="{{ route('frontend.projects.index') }}"> @lang('site.Projects') </a>
+                    <a href="{{ route('frontend.gallaries.index') }}"> @lang('site.Gallery') </a>
                 </div>
 
                 <div>
-                    <a href="{{ route('frontend.products.index') }}"> Products </a>
-                    <a href="{{ route('frontend.articles.index') }}"> News </a>
-                    <a href="{{ route('frontend.videos.index') }}"> Video Liberary </a>
-                    <a href="{{ route('frontend.contact.index') }}"> Contact Us </a>
+                    <a href="{{ route('frontend.products.index') }}"> @lang('site.Products') </a>
+                    <a href="{{ route('frontend.articles.index') }}"> @lang('site.News') </a>
+                    <a href="{{ route('frontend.videos.index') }}">   @lang('site.Video Liberary') </a>
+                    <a href="{{ route('frontend.contact.index') }}">  @lang('site.Contact Us') </a>
                 </div>
             </div>
 
             <div class="follow-us col-12 col-md-4">
-                <h5 class="text-center my-3"> Follow Us </h5>
+                <h5 class="text-center my-3"> @lang('site.Follow Us') </h5>
                 <ul class="list-unstyled">
                     <li>
                         <a href="{{ get_setting_by_key('facebook')->one_value}}" class="facebook">
@@ -52,7 +52,7 @@
             </div>
 
             <div class="get-in-touch col-6 col-md-3 p-0 px-md-2">
-                <h5 class="my-3 text-center text-md-left"> Get In Touch With Us </h5>
+                <h5 class="my-3 text-center text-md-left"> @lang('site.Get In Touch With Us') </h5>
 
                 <ul class="list-unstyled">
                     <li>
@@ -73,7 +73,7 @@
             </div>
 
             <div class="copy-rights col-12 d-flex justify-content-between">
-                <span> Poweered By <a href="#"> MediaServe </a> </span>
+                <span> @lang('site.Powered By') <a href="#"> MediaServe </a> </span>
                 <span> &copy; 2021 Nourelhooda </span>
             </div>
         </div>

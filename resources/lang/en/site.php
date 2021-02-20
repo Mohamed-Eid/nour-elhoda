@@ -8,7 +8,7 @@ return [
     'Products'      => 'Products', 
     'News'          => 'News', 
     'Video Library' => 'Video Library', 
-    'Gallary'       => 'Gallary', 
+    'Gallery'       => 'Gallery', 
     'Contact Us'    => 'Contact Us', 
 
     //home
@@ -37,6 +37,7 @@ return [
     
     //Videos Liberary
     'All' => 'All',
+    'Videos Liberary' => 'Videos Liberary',
     'Projects Videos' => 'Projects Videos',
     'Eng. Hatem Interviews' => 'Eng. Hatem Interviews',
     

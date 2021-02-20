@@ -7,24 +7,24 @@
 <!-- START:: PAGE CONTENT -->
 <div class="videos-liberary">
     <div class="container">
-        <h2 class="sec-heading mt-5"> Videos Liberary </h2>
+        <h2 class="sec-heading mt-5"> @lang('site.Videos Liberary') </h2>
         <div class="mb-5 mt-3"> {!! get_setting_by_key('videos_header')->value !!} </div>
 
         <!-- START:: TABS -->
         <ul class="nav nav-pills d-flex justify-content-center my-4" id="pills-tab" role="tablist">
             <li class="nav-item mx-3" role="presentation">
                 <a class="nav-link active" id="pills-all-videos-tab" data-toggle="pill" href="#pills-all-videos"
-                    role="tab" aria-controls="pills-all-videos" aria-selected="true">All</a>
+                    role="tab" aria-controls="pills-all-videos" aria-selected="true">@lang('site.All')</a>
             </li>
 
             <li class="nav-item mx-3" role="presentation">
                 <a class="nav-link" id="pills-projects-tab" data-toggle="pill" href="#pills-projects" role="tab"
-                    aria-controls="pills-projects" aria-selected="false">Projects Videos</a>
+                    aria-controls="pills-projects" aria-selected="false">@lang('site.Projects Videos')</a>
             </li>
 
             <li class="nav-item mx-3" role="presentation">
                 <a class="nav-link" id="pills-interviews-tab" data-toggle="pill" href="#pills-interviews" role="tab"
-                    aria-controls="pills-interviews" aria-selected="false">Eng. Hatem Interviews</a>
+                    aria-controls="pills-interviews" aria-selected="false">@lang('site.Eng. Hatem Interviews')</a>
             </li>
         </ul>
         <!-- START:: TABS -->

@@ -8,7 +8,7 @@
 <!-- START:: PAGE CONTENT -->
 <div class="contact-us-page">
     <div class="container">
-        <h2 class="sec-heading mt-5"> Our Farms Addresses </h2>
+        <h2 class="sec-heading mt-5"> @lang('site.Our Farms Addresses') </h2>
 
         <!-- START:: FARMS ADRESSES SECTION -->
         <div class="row justify-content-center mb-5">
@@ -103,7 +103,7 @@
             </div>
 
             <div class="col-12 col-md-6">
-                <h4 class="small-sec-heading text-center my-3"> Write Us A Message </h4>
+                <h4 class="small-sec-heading text-center my-3"> @lang('site.Write Us A Message') </h4>
                 <form action="{{ route('frontend.contact.store') }}" method="POST">
                     @csrf
                     <div class="row">

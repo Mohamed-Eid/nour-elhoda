@@ -49,35 +49,35 @@
         <div class="nav-links">
             <ul class="menu-container list-unstyled d-flex align-items-center ">
                 <li class="menu-item mx-3">
-                    <a href="{{ route('frontend.home') }}" class="{{ is_active('frontend.home') }}"> Home </a>
+                    <a href="{{ route('frontend.home') }}" class="{{ is_active('frontend.home') }}"> @lang('site.Home') </a>
+                </li>
+ 
+                <li class="menu-item mx-3">
+                    <a href="{{ route('frontend.about_us') }}" class="{{ is_active( 'frontend.about_us') }}"> @lang('site.About Us') </a>
                 </li>
 
                 <li class="menu-item mx-3">
-                    <a href="{{ route('frontend.about_us') }}" class="{{ is_active( 'frontend.about_us') }}"> About Us </a>
+                    <a href="{{ route('frontend.projects.index') }}" class="{{ is_active('frontend.projects.index') }}"> @lang('site.Projects') </a>
                 </li>
 
                 <li class="menu-item mx-3">
-                    <a href="{{ route('frontend.projects.index') }}" class="{{ is_active('frontend.projects.index') }}"> Projects </a>
+                    <a href="{{ route('frontend.products.index') }}" class="{{ is_active('frontend.products.index') }}"> @lang('site.Products') </a>
                 </li>
 
                 <li class="menu-item mx-3">
-                    <a href="{{ route('frontend.products.index') }}" class="{{ is_active('frontend.products.index') }}"> Products </a>
+                    <a href="{{ route('frontend.articles.index') }}" class="{{ is_active('frontend.articles.index') }}"> @lang('site.News') </a>
                 </li>
 
                 <li class="menu-item mx-3">
-                    <a href="{{ route('frontend.articles.index') }}" class="{{ is_active('frontend.articles.index') }}"> News </a>
+                    <a href="{{ route('frontend.videos.index') }}" class="{{ is_active('frontend.videos.index') }}"> @lang('site.Video Library') </a>
                 </li>
 
                 <li class="menu-item mx-3">
-                    <a href="{{ route('frontend.videos.index') }}" class="{{ is_active('frontend.videos.index') }}"> Video Liberary </a>
+                    <a href="{{ route('frontend.gallaries.index') }}" class="{{ is_active('frontend.gallaries.index') }}"> @lang('site.Gallery') </a>
                 </li>
 
                 <li class="menu-item mx-3">
-                    <a href="{{ route('frontend.gallaries.index') }}" class="{{ is_active('frontend.gallaries.index') }}"> Gallery </a>
-                </li>
-
-                <li class="menu-item mx-3">
-                    <a href="{{ route('frontend.contact.index') }}" class="{{ is_active('frontend.contact.index') }}"> Contact Us </a>
+                    <a href="{{ route('frontend.contact.index') }}" class="{{ is_active('frontend.contact.index') }}"> @lang('site.Contact Us') </a>
                 </li>
             </ul>
         </div>
@@ -85,7 +85,7 @@
         <div class="lang-btn d-flex align-items-center">
             @if(app()->getLocale() == 'en')
             <a href="{{ route('change_language','ar') }}" data-toggle="tooltip" data-placement="bottom" title="Change Language">
-                <i class="fas fa-language"></i> {{ app()->getLocale()  }}
+                <i class="fas fa-language"></i>
             </a>
             @elseif(app()->getLocale() == 'ar')
             <a href="{{ route('change_language','en') }}" data-toggle="tooltip" data-placement="bottom" title="Change Language">
