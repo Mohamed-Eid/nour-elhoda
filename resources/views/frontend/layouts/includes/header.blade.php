@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'lrt' }}">
 
 <head>
     <meta charset="UTF-8">
@@ -83,9 +83,16 @@
         </div>
 
         <div class="lang-btn d-flex align-items-center">
-            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Change Language">
+            @if(app()->getLocale() == 'en')
+            <a href="{{ route('change_language','ar') }}" data-toggle="tooltip" data-placement="bottom" title="Change Language">
+                <i class="fas fa-language"></i> {{ app()->getLocale()  }}
+            </a>
+            @elseif(app()->getLocale() == 'ar')
+            <a href="{{ route('change_language','en') }}" data-toggle="tooltip" data-placement="bottom" title="Change Language">
                 <i class="fas fa-language"></i>
             </a>
+            @endif
+
         </div>
     </nav>
     <!-- END:: NAVBAR -->

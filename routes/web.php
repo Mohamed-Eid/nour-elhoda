@@ -13,23 +13,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'Frontend\HomeController@index')->name('frontend.home');
-Route::get('/about_us', function(){
-    return view('frontend.about');
-})->name('frontend.about_us');
+Route::get('change_language/{locale}',function($locale){
+    
+    app()->setLocale($locale);
+    
+    session()->put('locale',$locale);
 
-Route::name('frontend.')->group(function(){
-    Route::resource('projects', 'Frontend\ProjectController')->only(['index', 'show']);
-    Route::resource('products', 'Frontend\ProductController')->only(['index', 'show']);
-    Route::resource('articles', 'Frontend\ArticleController')->only(['index', 'show']);
-    Route::resource('gallaries', 'Frontend\GallaryController')->only(['index', 'show']);
-    Route::resource('contact', 'Frontend\ContactController')->only(['index' , 'store']);
-    Route::get('videos', 'Frontend\VideoController')->name('videos.index');
+    return redirect()->back();
+
+})->name('change_language');
+
+
+Route::middleware(['change_lang'])->group(function () {
+
+    Route::get('/', 'Frontend\HomeController@index')->name('frontend.home');
+    Route::get('/about_us', function(){
+        return view('frontend.about');
+    })->name('frontend.about_us');
+
+    Route::name('frontend.')->group(function(){
+        Route::resource('projects', 'Frontend\ProjectController')->only(['index', 'show']);
+        Route::resource('products', 'Frontend\ProductController')->only(['index', 'show']);
+        Route::resource('articles', 'Frontend\ArticleController')->only(['index', 'show']);
+        Route::resource('gallaries', 'Frontend\GallaryController')->only(['index', 'show']);
+        Route::resource('contact', 'Frontend\ContactController')->only(['index' , 'store']);
+        Route::get('videos', 'Frontend\VideoController')->name('videos.index');
+    });
+
+    Route::get('get_more_projects','Frontend\ProjectController@more')->name('more_projects');
+    Route::get('get_more_products','Frontend\ProductController@more')->name('more_products');
+    Route::get('get_more_articles','Frontend\ArticleController@more')->name('more_articles');
+    
 });
 
-Route::get('get_more_projects','Frontend\ProjectController@more')->name('more_projects');
-Route::get('get_more_products','Frontend\ProductController@more')->name('more_products');
-Route::get('get_more_articles','Frontend\ArticleController@more')->name('more_articles');
 
 //AdminPanel Routes
 Route::group(['prefix' => 'admin'], function () {
